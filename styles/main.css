@@ -129,88 +129,88 @@ main nav .search .search-button .search-button-border {
   background: linear-gradient(to right bottom, #343337, #424246);
   background-clip: padding-box;
 }
-main .random-movies {
+main .trend-movies {
   width: 100%;
 }
-main .random-movies .container {
+main .trend-movies .container {
   width: calc(100% - 75px);
   padding: 0 12px;
   margin: 0 auto;
 }
-main .random-movies .content {
+main .trend-movies .content {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 3rem;
 }
-main .random-movies .title {
+main .trend-movies .title {
   width: 100%;
 }
-main .random-movies .title h2 {
+main .trend-movies .title h2 {
   font-size: 26px;
   color: #ffffff;
   font-family: "Exo light";
   font-weight: 400;
 }
-main .random-movies .slider {
+main .trend-movies .slider {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 3rem;
 }
-main .random-movies .slider .movie-item {
+main .trend-movies .slider .movie-item {
   width: 30%;
   height: auto;
   border-radius: 16px;
 }
-main .random-movies .slider .movie-img {
+main .trend-movies .slider .movie-img {
   width: 100%;
   max-height: 350px;
   transform: translateY(25px);
   border-radius: 16px;
   overflow: hidden;
 }
-main .random-movies .slider .movie-img img {
+main .trend-movies .slider .movie-img img {
   width: inherit;
 }
-main .random-movies .slider .movie-details {
+main .trend-movies .slider .movie-details {
   height: 200px;
   position: relative;
   border-radius: 16px;
   background-color: #49484D;
 }
-main .random-movies .slider .movie-details .movie-header {
+main .trend-movies .slider .movie-details .movie-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0.75rem 1rem;
 }
-main .random-movies .slider .movie-details .movie-header .movie-title {
+main .trend-movies .slider .movie-details .movie-header .movie-title {
   max-width: 275px;
 }
-main .random-movies .slider .movie-details .movie-header .movie-title h4 {
+main .trend-movies .slider .movie-details .movie-header .movie-title h4 {
   color: #F0C777;
   font-size: 22px;
   font-weight: 200;
   text-transform: capitalize;
 }
-main .random-movies .slider .movie-details .movie-header .movie-rate {
+main .trend-movies .slider .movie-details .movie-header .movie-rate {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-main .random-movies .slider .movie-details .movie-header .movie-rate span {
+main .trend-movies .slider .movie-details .movie-header .movie-rate span {
   font-size: 32px;
   color: #F0C777;
   text-shadow: 0px 0px 3px #F0C777;
 }
-main .random-movies .slider .movie-details .movie-body {
+main .trend-movies .slider .movie-details .movie-body {
   width: 100%;
   display: flex;
   padding: 0.75rem 1rem;
 }
-main .random-movies .slider .movie-details .movie-body p {
+main .trend-movies .slider .movie-details .movie-body p {
   font-size: 14px;
   color: #8B9DA9;
   font-weight: 200;
