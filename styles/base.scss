@@ -1,5 +1,44 @@
-// import fonts to project
+// define variables
+$dark: #2B2B2B;
+$very-dark: #1C1C1E;
+$gray: #49484D;
+$pink: #E67662;
+$yellow: #F0C777;
+$white: #ffffff;
+$orange: #F79238;
+$blue: #85C2D7;
+$cadet-gray: #8B9DA9;
+
+// import fonts
 @font-face {
     font-family: 'Exo';
-    src: url('../font/Exo-Regular.ttf') format('ttf');
+    src: url('../font/Exo-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Exo light';
+    src: url('../font/Exo-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Exo bold';
+    src: url('../font/Exo-Bold.ttf') format('truetype');
+}
+
+// declare default styles
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    transition: all 300ms;
+    font-family: 'Exo', sans-serif;
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
 }

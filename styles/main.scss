@@ -1,2 +1,252 @@
-@use 'base.scss';
-@use 'component.scss';
+@use 'component';
+@use 'base';
+
+body,
+html {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right, base.$pink 10%, base.$orange 10%, base.$orange 70%, base.$yellow 70%);
+}
+
+main {
+
+    & {
+        position: relative;
+        width: 1350px;
+        max-height: 715px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(90deg, base.$yellow 0%, base.$orange 2%, base.$pink 3%, base.$dark 7%, base.$very-dark 75%);
+        border-radius: 25px;
+        overflow-y: scroll;
+        scrollbar-width: none;
+    }
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+
+    nav {
+
+        .container {
+            width: calc(100% - 75px);
+            padding: 0 12px;
+            margin: 0 auto;
+        }
+
+        .content {
+            width: 100%;
+            display: flex;
+            padding: 3rem 0;
+        }
+
+        .search {
+
+            & {
+                position: relative;
+                @include component.container(max-content, auto);
+                // background: linear-gradient(to right bottom, base.$gray 10%, base.$dark 80%, base.$blue);
+                display: flex;
+            }
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 24px;
+                height: 55px;
+                left: -1px;
+                top: 0;
+                box-shadow: 0px 0px 4px 1px base.$yellow;
+                border: 1px solid base.$orange;
+                border-top-left-radius: inherit;
+                border-bottom-left-radius: inherit;
+                z-index: -1;
+            }
+
+            &::after {
+                left: unset;
+                right: -3px;
+                border-top-left-radius: unset;
+                border-bottom-left-radius: unset;
+                border-top-right-radius: inherit;
+                border-bottom-right-radius: inherit;
+                background: linear-gradient(to bottom, base.$orange, base.$blue);
+            }
+
+            .search-field {
+                width: 250px;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                color: base.$white;
+
+                &::-webkit-input-placeholder,
+                &::-moz-placeholder {
+                    font-family: 'Exo light';
+                    color: base.$cadet-gray;
+                }
+            }
+
+            .search-button {
+
+                & {
+                    position: relative;
+                    border-radius: 50%;
+                    background: linear-gradient(to right bottom, base.$orange, base.$blue);
+                    cursor: pointer;
+                }
+
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    width: 1.5px;
+                    height: 3px;
+                    left: 100%;
+                    top: 100%;
+                    transform: rotateZ(-45deg);
+                    background-color: base.$blue;
+                }
+
+                .search-button-border {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: inherit;
+                    border: 2px solid transparent;
+                    background:linear-gradient(to right bottom, #343337, #424246);
+                    background-clip: padding-box;
+                }
+            }
+        }
+    }
+
+    .random-movies {
+        & {
+            width: 100%;
+        }
+
+        .container {
+            width: calc(100% - 75px);
+            padding: 0 12px;
+            margin: 0 auto;
+        }
+
+        .content {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding-bottom: 3rem;
+        }
+
+        .title {
+            & {
+                width: 100%;
+            }
+
+            h2 {
+                font-size: 26px;
+                color: base.$white;
+                font-family: 'Exo light';
+                font-weight: 400;
+            }
+        }
+
+        .slider {
+
+            & {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                margin-top: 3rem;
+            }
+
+            .movie-item {
+                width: 30%;
+                height: auto;
+                border-radius: 16px;
+            }
+
+            .movie-img {
+
+                & {
+                    width: 100%;
+                    max-height: 350px;
+                    transform: translateY(25px);
+                    border-radius: 16px;
+                    overflow: hidden;
+                }
+
+                img {
+                    width: inherit;
+                }
+            }
+
+            .movie-details {
+                
+                & {
+                    height: 200px;
+                    position: relative;
+                    border-radius: 16px;
+                    background-color: base.$gray;
+                }
+
+                .movie-header {
+                    & {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        width: 100%;
+                        padding: 0.75rem 1rem;
+                    }
+
+                    .movie-title {
+                        &{
+                            max-width: 275px;
+                        }
+
+                        h4 {
+                            color: base.$yellow;
+                            font-size: 22px;
+                            font-weight: 200;
+                            text-transform: capitalize;
+                        }
+                    }
+
+                    .movie-rate {
+
+                        &{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+
+                        span {
+                            font-size: 32px;
+                            color: base.$yellow;
+                            text-shadow: 0px 0px 3px base.$yellow;
+                        }
+                    }
+                }
+
+                .movie-body {
+
+                    & {
+                        width: 100%;
+                        display: flex;
+                        padding: 0.75rem 1rem;
+                    }
+
+                    p {
+                        font-size: 14px;
+                        color: base.$cadet-gray;
+                        font-weight: 200;
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+    }
+}

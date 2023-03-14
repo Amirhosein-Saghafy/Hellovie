@@ -1,1 +1,28 @@
-/*# sourceMappingURL=component.css.map */
+@font-face {
+  font-family: "Exo";
+  src: url("../font/Exo-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Exo light";
+  src: url("../font/Exo-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Exo bold";
+  src: url("../font/Exo-Bold.ttf") format("truetype");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 300ms;
+  font-family: "Exo", sans-serif;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}/*# sourceMappingURL=component.css.map */
