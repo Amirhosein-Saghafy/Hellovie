@@ -1,11 +1,24 @@
 @use 'base';
 
-// base styles for buttons
 @mixin container($width, $height) {
     width: $width;
     height: $height;
     padding: 1.25rem 1.75rem;
-    background: linear-gradient(to right bottom, base.$very-dark, base.$gray);
+    background: base.$dark;
     border-radius: 40px;
     border: none;
+}
+
+@mixin field-container(){
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+@mixin field() {
+    display: inline-block;
+    font-family: 'Exo';
+    font-size: 18px;
+    color: base.$white;
+    margin-left: 0.5rem;
 }

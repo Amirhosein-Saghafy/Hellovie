@@ -31,7 +31,6 @@ body,
 html {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to right, #E67662 10%, #F79238 10%, #F79238 70%, #F0C777 70%);
 }
 
 main {
@@ -41,7 +40,7 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(90deg, #F0C777 0%, #F79238 2%, #E67662 3%, #2B2B2B 7%, #1C1C1E 75%);
+  background: linear-gradient(90deg, #D9A61C, #3A3637 25%);
   border-radius: 25px;
   overflow-y: scroll;
   scrollbar-width: none;
@@ -60,54 +59,46 @@ main nav .content {
   padding: 3rem 0;
 }
 main nav .search {
+  display: flex;
   position: relative;
   width: -moz-max-content;
   width: max-content;
   height: auto;
   padding: 1.25rem 1.75rem;
-  background: linear-gradient(to right bottom, #1C1C1E, #49484D);
+  background: #3A3637;
   border-radius: 40px;
   border: none;
-  display: flex;
 }
-main nav .search::before, main nav .search::after {
+main nav .search::after {
   content: "";
   position: absolute;
   display: block;
   width: 24px;
   height: 55px;
-  left: -1px;
+  right: -2px;
   top: 0;
-  box-shadow: 0px 0px 4px 1px #F0C777;
-  border: 1px solid #F79238;
-  border-top-left-radius: inherit;
-  border-bottom-left-radius: inherit;
-  z-index: -1;
-}
-main nav .search::after {
-  left: unset;
-  right: -3px;
-  border-top-left-radius: unset;
-  border-bottom-left-radius: unset;
+  box-shadow: 0px 0px 4px 1px #D9A61C;
+  border: 1px solid #D9A61C;
   border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
-  background: linear-gradient(to bottom, #F79238, #85C2D7);
+  background: #D9A61C;
+  z-index: -1;
+  transform: translateY(-1px);
 }
 main nav .search .search-field {
   width: 250px;
   background-color: transparent;
   border: none;
   outline: none;
-  color: #ffffff;
+  color: #F6EFF0;
 }
 main nav .search .search-field::-webkit-input-placeholder, main nav .search .search-field::-moz-placeholder {
   font-family: "Exo light";
-  color: #8B9DA9;
 }
 main nav .search .search-button {
   position: relative;
   border-radius: 50%;
-  background: linear-gradient(to right bottom, #F79238, #85C2D7);
+  background: linear-gradient(to right bottom, #D9A61C, #85C2D7);
   cursor: pointer;
 }
 main nav .search .search-button::after {
@@ -126,11 +117,202 @@ main nav .search .search-button .search-button-border {
   height: 20px;
   border-radius: inherit;
   border: 2px solid transparent;
-  background: linear-gradient(to right bottom, #343337, #424246);
+  background: #3A3637;
   background-clip: padding-box;
 }
-main .trend-movies {
+main .movie .container {
+  width: calc(100% - 75px);
+  padding: 0 12px;
+  margin: 0 auto;
+}
+main .movie .content {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 3rem;
+}
+main .movie .title h2 {
+  font-size: 32px;
+  color: #F6EFF0;
+  font-family: "Exo light";
+  font-weight: 400;
+  margin-bottom: 3rem;
+}
+main .movie .movie-poster {
+  width: 100%;
+}
+main .movie .movie-poster img {
+  width: 100%;
+  max-height: 450px;
+}
+main .movie .movie-details {
+  display: flex;
+  flex-direction: column;
+}
+main .movie .movie-details .movie-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+main .movie .movie-details .movie-header .movie-title h4 {
+  color: #F6EFF0;
+  font-size: 38px;
+  font-weight: 200;
+  text-transform: capitalize;
+}
+main .movie .movie-details .movie-header .movie-rate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .movie .movie-details .movie-header .movie-rate span {
+  font-size: 42px;
+  color: #D9A61C;
+}
+main .movie .movie-details .movie-body {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+main .movie .movie-details .movie-body .movie-realase {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+main .movie .movie-details .movie-body .movie-realase .movie-type span {
+  display: inline-block;
+  font-family: "Exo";
+  font-size: 18px;
+  color: #F6EFF0;
+  margin-left: 0.5rem;
+}
+main .movie .movie-details .movie-body .movie-realase .movie-year span {
+  display: inline-block;
+  font-family: "Exo";
+  font-size: 18px;
+  color: #F6EFF0;
+  margin-left: 0.5rem;
+}
+main .movie .movie-details .movie-body .movie-genres {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+main .movie .movie-details .movie-body .movie-genres span {
+  display: inline-block;
+  font-family: "Exo";
+  font-size: 18px;
+  color: #F6EFF0;
+  margin-left: 0.5rem;
+}
+main .movie .movie-details .movie-body .movie-duration {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+main .movie .movie-details .movie-body .movie-duration span {
+  display: inline-block;
+  font-family: "Exo";
+  font-size: 18px;
+  color: #F6EFF0;
+  margin-left: 0.5rem;
+}
+main .movie .movie-details .movie-body .movie-languages {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+main .movie .movie-details .movie-body .movie-languages ul {
+  display: flex;
+}
+main .movie .movie-details .movie-body .movie-languages span {
+  display: inline-block;
+  font-family: "Exo";
+  font-size: 18px;
+  color: #F6EFF0;
+  margin-left: 0.5rem;
+}
+main .movie .movie-details .movie-body .metacritic {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+main .movie .movie-details .movie-body .metacritic span {
+  display: inline-block;
+  font-family: "Exo";
+  font-size: 18px;
+  color: #F6EFF0;
+  margin-left: 0.5rem;
+}
+main .movie .movie-details .movie-body .movie-crew {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+}
+main .movie .movie-details .movie-body .movie-crew .directors {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+main .movie .movie-details .movie-body .movie-crew .directors span, main .movie .movie-details .movie-body .movie-crew .directors label {
+  display: inline-block;
+  font-family: "Exo";
+  font-size: 18px;
+  color: #F6EFF0;
+  margin-left: 0.5rem;
+}
+main .movie .movie-details .movie-body .movie-crew .writers {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+main .movie .movie-details .movie-body .movie-crew .writers span, main .movie .movie-details .movie-body .movie-crew .writers label {
+  display: inline-block;
+  font-family: "Exo";
+  font-size: 18px;
+  color: #F6EFF0;
+  margin-left: 0.5rem;
+}
+main .movie .movie-details .movie-body .movie-crew .writers label {
+  margin-left: 1.7rem;
+}
+main .movie .movie-details .movie-body .movie-crew .stars {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  line-height: 1rem;
+}
+main .movie .movie-details .movie-body .movie-crew .stars span, main .movie .movie-details .movie-body .movie-crew .stars label {
+  display: inline-block;
+  font-family: "Exo";
+  font-size: 18px;
+  color: #F6EFF0;
+  margin-left: 0.5rem;
+  font-size: 18px;
+  margin-left: 1.7rem;
+}
+main .movie .movie-details .movie-body .movie-crew .stars span:first-of-type {
+  margin-left: 0.5rem;
+}
+main .movie .movie-details .movie-body .movie-description {
+  margin-top: 1rem;
+}
+main .movie .movie-details .movie-body .movie-description span {
+  display: inline-block;
+  font-family: "Exo";
+  font-size: 18px;
+  color: #F6EFF0;
+  margin-left: 0.5rem;
+  margin-left: 0;
+}
+main .movie .movie-details .movie-body .movie-description p {
+  font-size: 24px;
+  color: #F6EFF0;
+  line-height: 35px;
 }
 main .trend-movies .container {
   width: calc(100% - 75px);
@@ -143,12 +325,9 @@ main .trend-movies .content {
   flex-wrap: wrap;
   padding-bottom: 3rem;
 }
-main .trend-movies .title {
-  width: 100%;
-}
 main .trend-movies .title h2 {
   font-size: 26px;
-  color: #ffffff;
+  color: #F6EFF0;
   font-family: "Exo light";
   font-weight: 400;
 }
@@ -177,7 +356,7 @@ main .trend-movies .slider .movie-details {
   height: 200px;
   position: relative;
   border-radius: 16px;
-  background-color: #49484D;
+  background-color: #3A3637;
 }
 main .trend-movies .slider .movie-details .movie-header {
   display: flex;
@@ -190,7 +369,7 @@ main .trend-movies .slider .movie-details .movie-header .movie-title {
   max-width: 275px;
 }
 main .trend-movies .slider .movie-details .movie-header .movie-title h4 {
-  color: #F0C777;
+  color: #D9A61C;
   font-size: 22px;
   font-weight: 200;
   text-transform: capitalize;
@@ -202,8 +381,8 @@ main .trend-movies .slider .movie-details .movie-header .movie-rate {
 }
 main .trend-movies .slider .movie-details .movie-header .movie-rate span {
   font-size: 32px;
-  color: #F0C777;
-  text-shadow: 0px 0px 3px #F0C777;
+  color: #D9A61C;
+  text-shadow: 0px 0px 3px #D9A61C;
 }
 main .trend-movies .slider .movie-details .movie-body {
   width: 100%;
@@ -212,7 +391,7 @@ main .trend-movies .slider .movie-details .movie-body {
 }
 main .trend-movies .slider .movie-details .movie-body p {
   font-size: 14px;
-  color: #8B9DA9;
+  color: #F6EFF0;
   font-weight: 200;
   line-height: 22px;
 }/*# sourceMappingURL=main.css.map */
