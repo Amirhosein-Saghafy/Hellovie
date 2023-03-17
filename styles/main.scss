@@ -5,7 +5,7 @@ body,
 html {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to right, base.$dark 25%, base.$white 25%, base.$white 75%, base.$gold 75%);
+    background: linear-gradient(to right, base.$dark 25%, rgb(224, 224, 224) 25%, rgb(224, 224, 224) 75%, base.$gold 75%);
 }
 
 main {
@@ -54,10 +54,10 @@ main {
                 content: '';
                 position: absolute;
                 display: block;
-                width: 24px;
-                height: 58px;
-                right: -2px;
-                top: -1px;
+                width: 25px;
+                height: 56px;
+                right: -1px;
+                top: 0px;
                 box-shadow: 0px 0px 4px 1px base.$gold;
                 border: 1px solid base.$gold;
                 border-top-right-radius: inherit;
@@ -112,6 +112,76 @@ main {
                     background-clip: padding-box;
                 }
             }
+
+            .search-result {
+
+                & {
+                    display: none;
+                    position: absolute;
+                    width: 100%;
+                    top: 110%;
+                    left: 0;
+                    background-color: base.$dark;
+                    padding: 1rem 1.5rem;
+                    box-shadow: 2px 2px 4px base.$gold;
+                }
+
+                &.show{
+                    display: block
+                }
+
+                .result-item {
+                    @include component.result-item();
+                }
+
+                .result-img {
+
+                    & {
+                        width: auto;
+                        height: auto;
+                    }
+
+                    img {
+                        width: 50px;
+                        height: inherit;
+                    }
+                }
+
+                .result-description {
+
+                    & {
+                        display: flex;
+                        flex-direction: column;
+                        width: calc(100% - 150px);
+                    }
+
+                    .result-name {
+
+                        & {
+                            width: 100%;
+                        }
+
+                        h4 {
+                            color: base.$white;
+                            font-size: 18px;
+                            font-weight: 300;
+                            text-transform: capitalize;
+                        }
+                    }
+
+                    .result-details {
+
+                        & {
+                            width: 100%;
+                        }
+
+                        span {
+                            color: base.$white;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
         }
 
         .select-category {
@@ -134,17 +204,20 @@ main {
             }
 
             .select-container {
+
                 & {
                     display: none;
                     position: absolute;
                     width: 100%;
                     left: 0;
                     top: 100%;
+
                     padding: {
                         top: 1.25rem;
                         right: 1.75rem;
                         left: 1.75rem;
                     }
+
                     border: 1px solid base.$gold;
                     border-radius: 40px;
                     color: base.$white;
@@ -156,7 +229,7 @@ main {
                     margin-bottom: 1.5rem;
                 }
 
-                &.open{
+                &.open {
                     display: block;
                 }
             }
