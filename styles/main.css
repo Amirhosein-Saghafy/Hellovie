@@ -31,6 +31,7 @@ body,
 html {
   width: 100vw;
   height: 100vh;
+  background: linear-gradient(to right, #3A3637 25%, #F6EFF0 25%, #F6EFF0 75%, #D9A61C 75%);
 }
 
 main {
@@ -56,6 +57,7 @@ main nav .container {
 main nav .content {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   padding: 3rem 0;
 }
 main nav .search {
@@ -74,9 +76,9 @@ main nav .search::after {
   position: absolute;
   display: block;
   width: 24px;
-  height: 55px;
+  height: 58px;
   right: -2px;
-  top: 0;
+  top: -1px;
   box-shadow: 0px 0px 4px 1px #D9A61C;
   border: 1px solid #D9A61C;
   border-top-right-radius: inherit;
@@ -96,6 +98,10 @@ main nav .search .search-field::-webkit-input-placeholder, main nav .search .sea
   font-family: "Exo light";
 }
 main nav .search .search-button {
+  width: -moz-max-content;
+  width: max-content;
+  height: -moz-max-content;
+  height: max-content;
   position: relative;
   border-radius: 50%;
   background: linear-gradient(to right bottom, #D9A61C, #85C2D7);
@@ -120,6 +126,47 @@ main nav .search .search-button .search-button-border {
   background: #3A3637;
   background-clip: padding-box;
 }
+main nav .select-category {
+  position: relative;
+  width: auto;
+}
+main nav .select-category .select-heading {
+  width: 200px;
+  height: auto;
+  padding: 1.25rem 1.75rem;
+  background: #3A3637;
+  border-radius: 40px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #D9A61C;
+  box-shadow: 0px 0px 4px #D9A61C;
+  color: #F6EFF0;
+  outline: none;
+  cursor: pointer;
+}
+main nav .select-category .select-container {
+  display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  padding-top: 1.25rem;
+  padding-right: 1.75rem;
+  padding-left: 1.75rem;
+  border: 1px solid #D9A61C;
+  border-radius: 40px;
+  color: #F6EFF0;
+  background-color: #3A3637;
+}
+main nav .select-category .select-container .select-value {
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+main nav .select-category .select-container.open {
+  display: block;
+}
 main .movie .container {
   width: calc(100% - 75px);
   padding: 0 12px;
@@ -130,6 +177,7 @@ main .movie .content {
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 3rem;
+  flex-direction: column;
 }
 main .movie .title h2 {
   font-size: 32px;
@@ -139,11 +187,14 @@ main .movie .title h2 {
   margin-bottom: 3rem;
 }
 main .movie .movie-poster {
-  width: 100%;
+  width: auto;
+  margin: 0 auto;
 }
 main .movie .movie-poster img {
-  width: 100%;
-  max-height: 450px;
+  width: auto;
+  max-width: 100%;
+  max-height: 500px;
+  border: 5px solid #F6EFF0;
 }
 main .movie .movie-details {
   display: flex;
@@ -178,7 +229,7 @@ main .movie .movie-details .movie-body {
 main .movie .movie-details .movie-body .movie-realase {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 main .movie .movie-details .movie-body .movie-realase .movie-type span {
   display: inline-block;
@@ -197,7 +248,7 @@ main .movie .movie-details .movie-body .movie-realase .movie-year span {
 main .movie .movie-details .movie-body .movie-genres {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 main .movie .movie-details .movie-body .movie-genres span {
   display: inline-block;
@@ -209,7 +260,7 @@ main .movie .movie-details .movie-body .movie-genres span {
 main .movie .movie-details .movie-body .movie-duration {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 main .movie .movie-details .movie-body .movie-duration span {
   display: inline-block;
@@ -221,7 +272,7 @@ main .movie .movie-details .movie-body .movie-duration span {
 main .movie .movie-details .movie-body .movie-languages {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 main .movie .movie-details .movie-body .movie-languages ul {
   display: flex;
@@ -236,7 +287,7 @@ main .movie .movie-details .movie-body .movie-languages span {
 main .movie .movie-details .movie-body .metacritic {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 main .movie .movie-details .movie-body .metacritic span {
   display: inline-block;
@@ -248,16 +299,17 @@ main .movie .movie-details .movie-body .metacritic span {
 main .movie .movie-details .movie-body .movie-crew {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   flex-direction: column;
   align-items: flex-start;
 }
 main .movie .movie-details .movie-body .movie-crew .directors {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
-main .movie .movie-details .movie-body .movie-crew .directors span, main .movie .movie-details .movie-body .movie-crew .directors label {
+main .movie .movie-details .movie-body .movie-crew .directors span,
+main .movie .movie-details .movie-body .movie-crew .directors label {
   display: inline-block;
   font-family: "Exo";
   font-size: 18px;
@@ -267,39 +319,30 @@ main .movie .movie-details .movie-body .movie-crew .directors span, main .movie 
 main .movie .movie-details .movie-body .movie-crew .writers {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
-main .movie .movie-details .movie-body .movie-crew .writers span, main .movie .movie-details .movie-body .movie-crew .writers label {
+main .movie .movie-details .movie-body .movie-crew .writers span,
+main .movie .movie-details .movie-body .movie-crew .writers label {
   display: inline-block;
   font-family: "Exo";
   font-size: 18px;
   color: #F6EFF0;
   margin-left: 0.5rem;
-}
-main .movie .movie-details .movie-body .movie-crew .writers label {
-  margin-left: 1.7rem;
 }
 main .movie .movie-details .movie-body .movie-crew .stars {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
-  line-height: 1rem;
+  margin-bottom: 0;
 }
-main .movie .movie-details .movie-body .movie-crew .stars span, main .movie .movie-details .movie-body .movie-crew .stars label {
+main .movie .movie-details .movie-body .movie-crew .stars span,
+main .movie .movie-details .movie-body .movie-crew .stars label {
   display: inline-block;
   font-family: "Exo";
   font-size: 18px;
   color: #F6EFF0;
   margin-left: 0.5rem;
-  font-size: 18px;
-  margin-left: 1.7rem;
-}
-main .movie .movie-details .movie-body .movie-crew .stars span:first-of-type {
-  margin-left: 0.5rem;
-}
-main .movie .movie-details .movie-body .movie-description {
-  margin-top: 1rem;
 }
 main .movie .movie-details .movie-body .movie-description span {
   display: inline-block;
@@ -310,7 +353,7 @@ main .movie .movie-details .movie-body .movie-description span {
   margin-left: 0;
 }
 main .movie .movie-details .movie-body .movie-description p {
-  font-size: 24px;
+  font-size: 20px;
   color: #F6EFF0;
   line-height: 35px;
 }
@@ -357,6 +400,7 @@ main .trend-movies .slider .movie-details {
   position: relative;
   border-radius: 16px;
   background-color: #3A3637;
+  box-shadow: 5px 5px 5px -3px #D9A61C;
 }
 main .trend-movies .slider .movie-details .movie-header {
   display: flex;
@@ -382,7 +426,6 @@ main .trend-movies .slider .movie-details .movie-header .movie-rate {
 main .trend-movies .slider .movie-details .movie-header .movie-rate span {
   font-size: 32px;
   color: #D9A61C;
-  text-shadow: 0px 0px 3px #D9A61C;
 }
 main .trend-movies .slider .movie-details .movie-body {
   width: 100%;

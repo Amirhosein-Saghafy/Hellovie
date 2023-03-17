@@ -5,6 +5,7 @@ body,
 html {
     width: 100vw;
     height: 100vh;
+    background: linear-gradient(to right, base.$dark 25%, base.$white 25%, base.$white 75%, base.$gold 75%);
 }
 
 main {
@@ -37,6 +38,7 @@ main {
         .content {
             width: 100%;
             display: flex;
+            justify-content: space-between;
             padding: 3rem 0;
         }
 
@@ -53,9 +55,9 @@ main {
                 position: absolute;
                 display: block;
                 width: 24px;
-                height: 55px;
+                height: 58px;
                 right: -2px;
-                top: 0;
+                top: -1px;
                 box-shadow: 0px 0px 4px 1px base.$gold;
                 border: 1px solid base.$gold;
                 border-top-right-radius: inherit;
@@ -81,6 +83,8 @@ main {
             .search-button {
 
                 & {
+                    width: max-content;
+                    height: max-content;
                     position: relative;
                     border-radius: 50%;
                     background: linear-gradient(to right bottom, base.$gold, base.$blue);
@@ -109,6 +113,54 @@ main {
                 }
             }
         }
+
+        .select-category {
+
+            & {
+                position: relative;
+                width: auto
+            }
+
+            .select-heading {
+                @include component.container(200px, auto);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: 1px solid base.$gold;
+                box-shadow: 0px 0px 4px base.$gold;
+                color: base.$white;
+                outline: none;
+                cursor: pointer;
+            }
+
+            .select-container {
+                & {
+                    display: none;
+                    position: absolute;
+                    width: 100%;
+                    left: 0;
+                    top: 100%;
+                    padding: {
+                        top: 1.25rem;
+                        right: 1.75rem;
+                        left: 1.75rem;
+                    }
+                    border: 1px solid base.$gold;
+                    border-radius: 40px;
+                    color: base.$white;
+                    background-color: base.$dark;
+                }
+
+                .select-value {
+                    cursor: pointer;
+                    margin-bottom: 1.5rem;
+                }
+
+                &.open{
+                    display: block;
+                }
+            }
+        }
     }
 
     .movie {
@@ -124,6 +176,7 @@ main {
             display: flex;
             flex-wrap: wrap;
             padding-bottom: 3rem;
+            flex-direction: column;
         }
 
         .title {
@@ -140,12 +193,15 @@ main {
         .movie-poster {
 
             & {
-                width: 100%;
+                width: auto;
+                margin: 0 auto;
             }
 
             img {
-                width: 100%;
-                max-height: 450px;
+                width: auto;
+                max-width: 100%;
+                max-height: 500px;
+                border: 5px solid base.$white;
             }
         }
 
@@ -277,7 +333,8 @@ main {
                             @include component.field-container();
                         }
 
-                        span,label {
+                        span,
+                        label {
                             @include component.field();
                         }
                     }
@@ -287,12 +344,9 @@ main {
                             @include component.field-container();
                         }
 
-                        span,label {
+                        span,
+                        label {
                             @include component.field();
-                        }
-
-                        label{
-                            margin-left: 1.7rem;
                         }
                     }
 
@@ -300,25 +354,17 @@ main {
                         & {
                             @include component.field-container();
                             flex-wrap: wrap;
-                            line-height: 1rem;
+                            margin-bottom: 0
                         }
 
-                        span,label {
+                        span,
+                        label {
                             @include component.field();
-                            font-size: 18px;
-                            margin-left: 1.7rem;
-                        }
-
-                        span:first-of-type{
-                            margin-left: 0.5rem;
                         }
                     }
                 }
 
                 .movie-description {
-                    & {
-                        margin-top: 1rem;
-                    }
 
                     span {
                         @include component.field();
@@ -326,7 +372,7 @@ main {
                     }
 
                     p {
-                        font-size: 24px;
+                        font-size: 20px;
                         color: base.$white;
                         line-height: 35px;
                     }
@@ -397,6 +443,7 @@ main {
                     position: relative;
                     border-radius: 16px;
                     background-color: base.$dark;
+                    box-shadow: 5px 5px 5px -3px base.$gold;
                 }
 
                 .movie-header {
@@ -432,7 +479,6 @@ main {
                         span {
                             font-size: 32px;
                             color: base.$gold;
-                            text-shadow: 0px 0px 3px base.$gold;
                         }
                     }
                 }
