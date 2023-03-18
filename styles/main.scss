@@ -125,7 +125,7 @@ main {
                     padding: 1rem 3rem;
                     box-shadow: 2px 2px 4px base.$gold;
                     max-height: 500px;
-                    overflow-y: scroll;
+                    overflow-y: auto;
                 }
 
                 &.show{

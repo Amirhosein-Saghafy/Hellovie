@@ -136,7 +136,7 @@ main nav .search .search-result {
   padding: 1rem 3rem;
   box-shadow: 2px 2px 4px #D9A61C;
   max-height: 500px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 main nav .search .search-result.show {
   display: block;
