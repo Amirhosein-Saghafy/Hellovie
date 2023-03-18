@@ -129,12 +129,14 @@ main nav .search .search-button .search-button-border {
 main nav .search .search-result {
   display: none;
   position: absolute;
-  width: 100%;
+  width: 200%;
   top: 110%;
   left: 0;
   background-color: #3A3637;
-  padding: 1rem 1.5rem;
+  padding: 1rem 3rem;
   box-shadow: 2px 2px 4px #D9A61C;
+  max-height: 500px;
+  overflow-y: scroll;
 }
 main nav .search .search-result.show {
   display: block;
@@ -144,21 +146,25 @@ main nav .search .search-result .result-item {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-bottom: 0.5rem;
+  padding: 1.5rem 0;
   border-bottom: 1px solid #F6EFF0;
+  cursor: pointer;
+}
+main nav .search .search-result .result-item:last-child {
+  border-bottom: none;
 }
 main nav .search .search-result .result-img {
   width: auto;
   height: auto;
 }
 main nav .search .search-result .result-img img {
-  width: 50px;
+  width: 150px;
   height: inherit;
 }
 main nav .search .search-result .result-description {
   display: flex;
   flex-direction: column;
-  width: calc(100% - 150px);
+  width: 300px;
 }
 main nav .search .search-result .result-description .result-name {
   width: 100%;
@@ -171,10 +177,15 @@ main nav .search .search-result .result-description .result-name h4 {
 }
 main nav .search .search-result .result-description .result-details {
   width: 100%;
+  margin-top: 2rem;
 }
 main nav .search .search-result .result-description .result-details span {
   color: #F6EFF0;
   font-size: 14px;
+}
+main nav .search .search-result span {
+  color: #D9A61C;
+  font-size: 18px;
 }
 main nav .select-category {
   position: relative;

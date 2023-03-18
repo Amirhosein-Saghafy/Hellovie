@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/main.css">
+    <script src="./scripts/controller.js" type="module" defer></script>
     <title>Hellovie</title>
 </head>
 
@@ -15,35 +16,23 @@
             <div class="container">
                 <div class="content">
                     <div class="search">
-                        <input type="text" class="search-field" placeholder="Search Something">
+                        <input type="text" class="search-field" id="search-field" placeholder="Search Something">
                         <div class="search-button">
                             <div class="search-button-border"></div>
                         </div>
-                        <div class="search-result">
-                            <a class="result-item">
-                                <div class="result-img">
-                                    <img src="images/4K_ZkCBhG4I9Nig2we.jpg" alt="result-img">
-                                </div>
-                                <div class="result-description">
-                                    <div class="result-name">
-                                        <h4>fake name</h4>
-                                    </div>
-                                    <div class="result-details">
-                                        <span>2010</span>
-                                    </div>
-                                </div>
-                            </a>
+                        <div class="search-result show">
+                            
                         </div>
                     </div>
                     <div class="select-category">
                         <div class="select-heading">
-                            <span>Select Genre</span>
+                            <span id="selected-genre" data-value="">Select Genre</span>
                             <svg width="12" height="12" fill="#D9A61C">
                                 <use xlink:href="./icons/solid.svg#angle-down" />
                             </svg>
                         </div>
                         <div class="select-container">
-                            <div class="select-value" data-value="No select">Select Genre</div>
+                            <div class="select-value" data-value="">Select Genre</div>
                             <div class="select-value" data-value="Action">Action</div>
                             <div class="select-value" data-value="Adventure">Adventure</div>
                             <div class="select-value" data-value="Comedy">Comedy</div>
@@ -53,7 +42,7 @@
                             <div class="select-value" data-value="Horror">Horror</div>
                             <div class="select-value" data-value="Musical">Musical</div>
                             <div class="select-value" data-value="Romance">Romance</div>
-                            <div class="select-value" data-value="Science fiction">Science fiction</div>
+                            <div class="select-value" data-value="Science-fiction">Science fiction</div>
                             <div class="select-value" data-value="Western">Western</div>
                         </div>
                     </div>
@@ -211,24 +200,19 @@
                                         <span>8.3</span>
                                         <div class="stars">
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star" />
+                                                <use xlink:href="./icons/regular.svg#star" />
                                             </svg>
                                         </div>
                                     </div>
@@ -255,24 +239,19 @@
                                         <span>8.3</span>
                                         <div class="stars">
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star" />
+                                                <use xlink:href="./icons/regular.svg#star" />
                                             </svg>
                                         </div>
                                     </div>
@@ -299,24 +278,19 @@
                                         <span>8.3</span>
                                         <div class="stars">
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star-fill" />
+                                                <use xlink:href="./icons/solid.svg#star" />
                                             </svg>
                                             <svg width="12" height="12" fill="#D9A61C">
-                                                <use
-                                                    xlink:href="./node_modules/bootstrap-icons/bootstrap-icons.svg#star" />
+                                                <use xlink:href="./icons/regular.svg#star" />
                                             </svg>
                                         </div>
                                     </div>
