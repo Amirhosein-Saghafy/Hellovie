@@ -498,94 +498,70 @@ main .movie .content .related-movies .title h2 {
   font-weight: 400;
   margin-top: 5rem;
 }
-main .movie .content .related-movies .slider {
+main .movie .content .related-movies .swiper {
   width: 100%;
-  position: relative;
+  height: 600px;
 }
-main .movie .content .related-movies .slider .slider-indicator {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #3A3637;
-  border: 2px solid #F6EFF0;
-  z-index: 1;
-  cursor: pointer;
-}
-main .movie .content .related-movies .slider .prev-button {
-  left: -30px;
-}
-main .movie .content .related-movies .slider .next-button {
-  right: -30px;
-}
-main .movie .content .related-movies .slider .slider-inner {
-  width: -moz-max-content;
-  width: max-content;
-  display: flex;
-  justify-content: space-between;
-}
-main .movie .content .related-movies .slider .slider-inner .movie-item {
-  width: 350px;
-  margin-right: 98px;
-  height: auto;
+main .movie .content .related-movies .swiper .swiper-slide {
   border-radius: 16px;
   cursor: pointer;
 }
-main .movie .content .related-movies .slider .slider-inner .movie-item .movie-img {
+main .movie .content .related-movies .swiper .swiper-slide .movie-img {
   width: 100%;
   height: 500px;
   transform: translateY(25px);
   border-radius: 16px;
   overflow: hidden;
 }
-main .movie .content .related-movies .slider .slider-inner .movie-item .movie-img img {
+main .movie .content .related-movies .swiper .swiper-slide .movie-img img {
   width: inherit;
   height: inherit;
 }
-main .movie .content .related-movies .slider .slider-inner .movie-item .movie-details {
+main .movie .content .related-movies .swiper .swiper-slide .movie-details {
   height: auto;
   position: relative;
   border-radius: 16px;
   background-color: #3A3637;
   box-shadow: 5px 5px 5px -3px #D9A61C;
 }
-main .movie .content .related-movies .slider .slider-inner .movie-item .movie-details .movie-header {
+main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0.75rem 1rem;
 }
-main .movie .content .related-movies .slider .slider-inner .movie-item .movie-details .movie-header .movie-title {
+main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-header .movie-title {
   max-width: 230px;
 }
-main .movie .content .related-movies .slider .slider-inner .movie-item .movie-details .movie-header .movie-title h4 {
+main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-header .movie-title h4 {
   color: #D9A61C;
   font-size: 22px;
   font-weight: 200;
   text-transform: capitalize;
 }
-main .movie .content .related-movies .slider .slider-inner .movie-item .movie-details .movie-header .movie-rate {
+main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-header .movie-rate {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-main .movie .content .related-movies .slider .slider-inner .movie-item .movie-details .movie-header .movie-rate span {
+main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-header .movie-rate span {
   font-size: 32px;
   color: #D9A61C;
 }
-main .movie .content .related-movies .slider .slider-inner .movie-item .movie-details .movie-body {
+main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-body {
   width: 100%;
   display: flex;
   padding: 0.75rem 1rem;
 }
-main .movie .content .related-movies .slider .slider-inner .movie-item .movie-details .movie-body p {
+main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-body p {
   font-size: 14px;
   color: #F6EFF0;
   font-weight: 200;
   line-height: 22px;
+}
+main .movie .content .related-movies .swiper .swiper-button-prev, main .movie .content .related-movies .swiper .swiper-button-next {
+  color: #D9A61C;
 }
 main .movie .content > h3 {
   text-align: center;

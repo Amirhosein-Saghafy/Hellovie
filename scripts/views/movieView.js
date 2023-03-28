@@ -1,3 +1,5 @@
+import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.esm.browser.min.js'
+
 class searchView {
 
     #errorMessage = ``;
@@ -28,7 +30,7 @@ class searchView {
             movie.similars.forEach(similar => {
 
                 relatedMovies.push(`
-                <div class="movie-item" data-id="${similar.id}">
+                <div class="swiper-slide" data-id="${similar.id}">
                     <div class="movie-img">
                         <img src="${similar.image}" alt="movie poster">
                     </div>
@@ -59,29 +61,24 @@ class searchView {
                         </div>
                     </div>
                 </div>
-            </div>`)});
+            </div>`)
+            });
 
-             relatedMoviesSection = `
+            relatedMoviesSection = `
                 <div class="related-movies">
                     <div class="title">
                         <h2>Related Movies</h2>
                     </div>
-                <div class="slider">
-                    <button class="slider-indicator prev-button">
-                        <svg width="12" height="12" fill="#D9A61C">
-                            <use xlink:href="./icons/solid.svg#chevron-left" />
-                        </svg>
-                    </button>
-                    <div class = "slider-inner">
-                    ${relatedMovies}
+                    <div class="swiper">
+                        <div class="swiper-wrapper">
+                            ${relatedMovies}
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
                     </div>
-                    <button class="slider-indicator next-button">
-                        <svg width="12" height="12" fill="#D9A61C">
-                            <use xlink:href="./icons/solid.svg#chevron-right" />
-                        </svg>
-                    </button>
-                </div>
-            </div >`;
+                </div >`;
+
+            this.sliderHandler();
         }
 
         const markup = `
@@ -222,27 +219,23 @@ class searchView {
 
     sliderHandler() {
 
-        this.#parentElement.addEventListener('click', function (e) {
+        const swiper = new Swiper('.swiper', {
+            grabCursor: true,
+            loop: true,
+            slidesPerView: 3,
+            spaceBetween: 300,
+            speed: 400,
+            spaceBetween: 100,
 
-            const sliderIndicator = e.target.closest('.slider-indicator');
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
 
-            if (!sliderIndicator)
-                return;
+        const swiperProp = this.#parentElement.querySelector('.swiper').swiper;
 
-            if (sliderIndicator.classList.contains('prev-button')) {
-
-                this.querySelector('.related-movies .slider-inner').style.transform = 'translateX(0px)';
-            }
-
-            if (sliderIndicator.classList.contains('next-button')) {
-
-                this.querySelector('.related-movies .slider-inner').style.transform = 'translateX(-450px)';
-            }
-        })
-    }
-
-    init() {
-        this.sliderHandler();
+        console.log(swiperProp);
     }
 }
 

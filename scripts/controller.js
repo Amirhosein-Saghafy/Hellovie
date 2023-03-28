@@ -43,7 +43,6 @@ class controller {
         searchView.selectMovieHandler(this.controlSelectMovie.bind(this));
         movieView.selectRelatedMovieHandler(this.controlSelectMovie.bind(this));
         searchView.init();
-        movieView.init();
     }
 }
 
