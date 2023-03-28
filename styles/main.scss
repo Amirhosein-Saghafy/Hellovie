@@ -5,7 +5,7 @@ body,
 html {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to right, base.$dark 25%, rgb(224, 224, 224) 25%, rgb(224, 224, 224) 75%, base.$gold 75%);
+    background: linear-gradient(to right, base.$dark 25%, rgb(182, 180, 180) 25%, rgb(182, 180, 180) 75%, base.$gold 75%);
 }
 
 main {
@@ -13,7 +13,7 @@ main {
     & {
         position: relative;
         width: 1350px;
-        max-height: 715px;
+        height: 715px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -126,16 +126,57 @@ main {
                     box-shadow: 2px 2px 4px base.$gold;
                     max-height: 500px;
                     overflow-y: auto;
+                    z-index: 1;
                 }
 
-                &.show{
+                &.show {
                     display: block
+                }
+
+                @keyframes rotatePreloader {
+                    0% {
+                        transform: rotateZ(0deg);
+                    }
+
+                    50% {
+                        transform: rotateZ(180deg);
+                    }
+
+                    100% {
+                        transform: rotateZ(360deg);
+                    }
+                }
+
+                .preloader {
+
+                    & {
+                        position: relative;
+                        display: block;
+                        width: 550px;
+                        height: 450px;
+                        background-color: base.$dark;
+                        z-index: 10;
+                    }
+
+                    .spinner {
+                        position: absolute;
+                        width: 30px;
+                        height: 30px;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background-color: transparent;
+                        border: 2px solid base.$gold;
+                        border-bottom: 2px solid transparent;
+                        border-radius: 50%;
+                        animation: rotatePreloader 800ms linear 0s infinite normal forwards;
+                    }
                 }
 
                 .result-item {
                     @include component.result-item();
 
-                    &:last-child{
+                    &:last-child {
                         border-bottom: none;
                     }
                 }
@@ -150,6 +191,7 @@ main {
                     img {
                         width: 150px;
                         height: inherit;
+                        color: base.$gold;
                     }
                 }
 
@@ -189,9 +231,12 @@ main {
                     }
                 }
 
-                span{
+                >span {
+                    display: inline-block;
+                    width: 100%;
                     color: base.$gold;
                     font-size: 18px;
+                    text-align: center;
                 }
             }
         }
@@ -222,7 +267,7 @@ main {
                     position: absolute;
                     width: 100%;
                     left: 0;
-                    top: 100%;
+                    top: calc(100% + 10px);
 
                     padding: {
                         top: 1.25rem;
@@ -234,6 +279,7 @@ main {
                     border-radius: 40px;
                     color: base.$white;
                     background-color: base.$dark;
+                    z-index: 1;
                 }
 
                 .select-value {
@@ -257,332 +303,428 @@ main {
         }
 
         .content {
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            padding-bottom: 3rem;
-            flex-direction: column;
-        }
-
-        .title {
-
-            h2 {
-                font-size: 32px;
-                color: base.$white;
-                font-family: 'Exo light';
-                font-weight: 400;
-                margin-bottom: 3rem;
-            }
-        }
-
-        .movie-poster {
-
-            & {
-                width: auto;
-                margin: 0 auto;
-            }
-
-            img {
-                width: auto;
-                max-width: 100%;
-                max-height: 500px;
-                border: 5px solid base.$white;
-            }
-        }
-
-        .movie-details {
-
-            & {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .movie-header {
-
-                & {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-top: 2rem;
-                }
-
-                .movie-title {
-
-                    h4 {
-                        color: base.$white;
-                        font-size: 38px;
-                        font-weight: 200;
-                        text-transform: capitalize;
-                    }
-                }
-
-                .movie-rate {
-
-                    & {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                    }
-
-                    span {
-                        font-size: 42px;
-                        color: base.$gold;
-                    }
-                }
-            }
-
-            .movie-body {
-
-                & {
-                    display: flex;
-                    flex-direction: column;
-                    margin: 1rem 0;
-                }
-
-                .movie-realase {
-
-                    & {
-                        @include component.field-container();
-                    }
-
-                    .movie-type {
-
-                        span {
-                            @include component.field();
-                        }
-                    }
-
-                    .movie-year {
-
-                        span {
-                            @include component.field();
-                        }
-                    }
-                }
-
-                .movie-genres {
-
-                    & {
-                        @include component.field-container();
-                    }
-
-                    span {
-                        @include component.field();
-                    }
-                }
-
-                .movie-duration {
-                    & {
-                        @include component.field-container();
-                    }
-
-                    span {
-                        @include component.field();
-                    }
-                }
-
-                .movie-languages {
-
-                    & {
-                        @include component.field-container();
-                    }
-
-                    ul {
-                        display: flex;
-                    }
-
-                    span {
-                        @include component.field();
-                    }
-                }
-
-                .metacritic {
-                    & {
-                        @include component.field-container();
-                    }
-
-                    span {
-                        @include component.field();
-                    }
-                }
-
-                .movie-crew {
-                    & {
-                        @include component.field-container();
-                        flex-direction: column;
-                        align-items: flex-start;
-                    }
-
-                    .directors {
-                        & {
-                            @include component.field-container();
-                        }
-
-                        span,
-                        label {
-                            @include component.field();
-                        }
-                    }
-
-                    .writers {
-                        & {
-                            @include component.field-container();
-                        }
-
-                        span,
-                        label {
-                            @include component.field();
-                        }
-                    }
-
-                    .stars {
-                        & {
-                            @include component.field-container();
-                            flex-wrap: wrap;
-                            margin-bottom: 0
-                        }
-
-                        span,
-                        label {
-                            @include component.field();
-                        }
-                    }
-                }
-
-                .movie-description {
-
-                    span {
-                        @include component.field();
-                        margin-left: 0;
-                    }
-
-                    p {
-                        font-size: 20px;
-                        color: base.$white;
-                        line-height: 35px;
-                    }
-                }
-            }
-        }
-    }
-
-    .trend-movies {
-
-        .container {
-            width: calc(100% - 75px);
-            padding: 0 12px;
-            margin: 0 auto;
-        }
-
-        .content {
-            width: 100%;
-            display: flex;
-            flex-wrap: wrap;
-            padding-bottom: 3rem;
-        }
-
-        .title {
-
-            h2 {
-                font-size: 26px;
-                color: base.$white;
-                font-family: 'Exo light';
-                font-weight: 400;
-            }
-        }
-
-        .slider {
 
             & {
                 width: 100%;
                 display: flex;
-                justify-content: space-between;
-                margin-top: 3rem;
+                flex-wrap: wrap;
+                padding-bottom: 3rem;
+                flex-direction: column;
             }
 
-            .movie-item {
-                width: 30%;
-                height: auto;
-                border-radius: 16px;
-            }
-
-            .movie-img {
-
-                & {
-                    width: 100%;
-                    max-height: 350px;
-                    transform: translateY(25px);
-                    border-radius: 16px;
-                    overflow: hidden;
+            @keyframes rotatePreloader {
+                0% {
+                    transform: rotateZ(0deg);
                 }
 
-                img {
-                    width: inherit;
+                50% {
+                    transform: rotateZ(180deg);
+                }
+
+                100% {
+                    transform: rotateZ(360deg);
                 }
             }
 
-            .movie-details {
+            .preloader {
 
                 & {
-                    height: 200px;
                     position: relative;
-                    border-radius: 16px;
-                    background-color: base.$dark;
-                    box-shadow: 5px 5px 5px -3px base.$gold;
+                    display: block;
+                    width: 100%;
+                    height: 286px;
+                    z-index: 10;
                 }
 
-                .movie-header {
+                .spinner {
+                    position: absolute;
+                    width: 30px;
+                    height: 30px;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: transparent;
+                    border: 2px solid base.$gold;
+                    border-bottom: 2px solid transparent;
+                    border-radius: 50%;
+                    animation: rotatePreloader 800ms linear 0s infinite normal forwards;
+                }
+            }
+
+            .selected-movie {
+
+                .title {
+
+                    h2 {
+                        font-size: 32px;
+                        color: base.$white;
+                        font-family: 'Exo light';
+                        font-weight: 400;
+                        margin-bottom: 3rem;
+                    }
+                }
+
+                .movie-poster {
+
+                    & {
+                        width: max-content;
+                        margin: 0 auto;
+                    }
+
+                    img {
+                        width: auto;
+                        max-width: 100%;
+                        max-height: 500px;
+                        border: 5px solid base.$white;
+                    }
+                }
+
+                .movie-details {
+
                     & {
                         display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        width: 100%;
-                        padding: 0.75rem 1rem;
+                        flex-direction: column;
                     }
 
-                    .movie-title {
+                    .movie-header {
+
                         & {
-                            max-width: 275px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-top: 2rem;
                         }
 
-                        h4 {
-                            color: base.$gold;
-                            font-size: 22px;
-                            font-weight: 200;
-                            text-transform: capitalize;
+                        .movie-title {
+
+                            h4 {
+                                color: base.$white;
+                                font-size: 38px;
+                                font-weight: 200;
+                                text-transform: capitalize;
+                            }
+                        }
+
+                        .movie-rate {
+
+                            & {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                            }
+
+                            span {
+                                font-size: 42px;
+                                color: base.$gold;
+                            }
                         }
                     }
 
-                    .movie-rate {
+                    .movie-body {
 
                         & {
                             display: flex;
                             flex-direction: column;
-                            align-items: center;
+                            margin: 1rem 0;
                         }
 
-                        span {
-                            font-size: 32px;
-                            color: base.$gold;
+                        .movie-realase {
+
+                            & {
+                                @include component.field-container();
+                            }
+
+                            .movie-type {
+
+                                span {
+                                    @include component.field();
+                                }
+                            }
+
+                            .movie-year {
+
+                                span {
+                                    @include component.field();
+                                }
+                            }
+                        }
+
+                        .movie-genres {
+
+                            & {
+                                @include component.field-container();
+                            }
+
+                            span {
+                                @include component.field();
+                            }
+                        }
+
+                        .movie-duration {
+                            & {
+                                @include component.field-container();
+                            }
+
+                            span {
+                                @include component.field();
+                            }
+                        }
+
+                        .movie-languages {
+
+                            & {
+                                @include component.field-container();
+                            }
+
+                            ul {
+                                display: flex;
+                            }
+
+                            span {
+                                @include component.field();
+                            }
+                        }
+
+                        .metacritic {
+                            & {
+                                @include component.field-container();
+                            }
+
+                            span {
+                                @include component.field();
+                            }
+                        }
+
+                        .movie-crew {
+                            & {
+                                @include component.field-container();
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+
+                            .directors {
+                                & {
+                                    @include component.field-container();
+                                }
+
+                                span,
+                                label {
+                                    @include component.field();
+                                }
+                            }
+
+                            .writers {
+                                & {
+                                    @include component.field-container();
+                                }
+
+                                span,
+                                label {
+                                    @include component.field();
+                                }
+                            }
+
+                            .stars {
+                                & {
+                                    @include component.field-container();
+                                    flex-wrap: wrap;
+                                    margin-bottom: 0
+                                }
+
+                                span,
+                                label {
+                                    @include component.field();
+                                }
+                            }
+                        }
+
+                        .movie-description {
+
+                            span {
+                                @include component.field();
+                                margin-left: 0;
+                            }
+
+                            p {
+                                font-size: 20px;
+                                color: base.$white;
+                                line-height: 35px;
+                            }
                         }
                     }
                 }
+            }
 
-                .movie-body {
+            .related-movies {
 
+                & {
+                    width: 100%;
+                }
+
+                .title {
+
+                    h2 {
+                        font-size: 26px;
+                        color: base.$white;
+                        font-family: 'Exo light';
+                        font-weight: 400;
+                        margin-top: 5rem;
+                    }
+                }
+
+                .slider {
+                    
                     & {
                         width: 100%;
-                        display: flex;
-                        padding: 0.75rem 1rem;
+                        position: relative;
                     }
 
-                    p {
-                        font-size: 14px;
-                        color: base.$white;
-                        font-weight: 200;
-                        line-height: 22px;
+                    .slider-indicator {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        background-color: base.$dark;
+                        border: 2px solid base.$white;
+                        z-index: 1;
+                        cursor: pointer;
                     }
+
+                    .prev-button {
+                        left: -30px;
+                    }
+
+                    .next-button {
+                        right: -30px;
+                    }
+
+                    .slider-inner {
+
+                        & {
+                            width: max-content;
+                            display: flex;
+                            justify-content: space-between;
+                        }
+    
+                        .movie-item {
+                            & {
+                                width: 350px;
+                                margin-right: 98px;
+                                height: auto;
+                                border-radius: 16px;
+                                cursor: pointer;
+                            }
+    
+                            .movie-img {
+    
+                                & {
+                                    width: 100%;
+                                    height: 500px;
+                                    transform: translateY(25px);
+                                    border-radius: 16px;
+                                    overflow: hidden;
+                                }
+    
+                                img {
+                                    width: inherit;
+                                    height: inherit;
+                                }
+                            }
+    
+                            .movie-details {
+    
+                                & {
+                                    height: auto;
+                                    position: relative;
+                                    border-radius: 16px;
+                                    background-color: base.$dark;
+                                    box-shadow: 5px 5px 5px -3px base.$gold;
+                                }
+    
+                                .movie-header {
+                                    & {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        width: 100%;
+                                        padding: 0.75rem 1rem;
+                                    }
+    
+                                    .movie-title {
+                                        & {
+                                            max-width: 230px;
+                                        }
+    
+                                        h4 {
+                                            color: base.$gold;
+                                            font-size: 22px;
+                                            font-weight: 200;
+                                            text-transform: capitalize;
+                                        }
+                                    }
+    
+                                    .movie-rate {
+    
+                                        & {
+                                            display: flex;
+                                            flex-direction: column;
+                                            align-items: center;
+                                        }
+    
+                                        span {
+                                            font-size: 32px;
+                                            color: base.$gold;
+                                        }
+                                    }
+                                }
+    
+                                .movie-body {
+    
+                                    & {
+                                        width: 100%;
+                                        display: flex;
+                                        padding: 0.75rem 1rem;
+                                    }
+    
+                                    p {
+                                        font-size: 14px;
+                                        color: base.$white;
+                                        font-weight: 200;
+                                        line-height: 22px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                 }
+            }
+
+            >h3 {
+                text-align: center;
+                color: base.$gold;
+                font-weight: 100;
+                font-size: 32px;
+                text-transform: uppercase;
+                margin-top: 10rem;
+
+                >span {
+                    display: block;
+                    width: 100%;
+                    margin: 1rem 0;
+                    font-size: 24px;
+                    text-transform: capitalize;
+                }
+            }
+
+            >span {
+                width: 100%;
+                padding: 1rem 0;
+                text-align: center;
+                color: base.$gold;
+                font-size: 28px;
             }
         }
     }

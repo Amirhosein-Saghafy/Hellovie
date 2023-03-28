@@ -1,5 +1,6 @@
 import model from "./model/model.js";
 import searchView from "./views/searchView.js";
+import movieView from "./views/movieView.js";
 
 class controller {
 
@@ -7,6 +8,8 @@ class controller {
     #selectedGenre = document.getElementById('selected-genre');
 
     async controlSearchField() {
+
+        searchView.renderLoading();
 
         const searchValue = this.#searchField.value;
         const specialChars = /[^a-zA-Z0-9 ]/g;
@@ -23,8 +26,24 @@ class controller {
         searchView.render(model.state.searchResults);
     }
 
+    async controlSelectMovie(id) {
+
+        movieView.renderLoading();
+
+        await model.selectMovie(id);
+
+        if (!model.state.isSuccess)
+            return movieView.renderError(model.state.errorMessage);
+
+        movieView.render(model.state.selectedMovie);
+    }
+
     init() {
         searchView.searchHandler(this.controlSearchField.bind(this));
+        searchView.selectMovieHandler(this.controlSelectMovie.bind(this));
+        movieView.selectRelatedMovieHandler(this.controlSelectMovie.bind(this));
+        searchView.init();
+        movieView.init();
     }
 }
 

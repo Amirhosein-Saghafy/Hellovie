@@ -4,6 +4,7 @@ class model {
 
     state = {
         searchResults: [],
+        selectedMovie: null,
         errorMessage: '',
         isSuccess: true,
     }
@@ -11,26 +12,61 @@ class model {
     async search(searchValue, selectedGenre = undefined) {
 
         try {
-            
-            let data;
-            
+
+            let request,
+                timeOut,
+                data;
+
+            timeOut = new Promise((_, reject) => {
+                setTimeout(() => {
+                    reject('Took too long to respond, please try again later');
+                }, 20000);
+            });
+
             if (selectedGenre)
-                data = await fetch(`${baseUrl}/AdvancedSearch/${apiKey}/?title=${searchValue}&genres=${selectedGenre.toLowerCase()}`).
-                    then(res => res.json()).
-                    catch(() => {
-                        throw new Error('Something went wrong, please try again later');
-                    });
+                request = fetch(`${baseUrl}/AdvancedSearch/${apiKey}/?title=${searchValue}&genres=${selectedGenre.toLowerCase()}`);
             else
-                data = await fetch(`${baseUrl}/SearchTitle/${apiKey}/${searchValue}`).
-                    then(res => res.json()).
-                    catch(() => {
-                        throw new Error('Something went wrong, please try again later');
-                    });
+                request = fetch(`${baseUrl}/SearchTitle/${apiKey}/${searchValue}`);
+
+            data = await Promise.race([request, timeOut]).then(res => res.json()).catch((error) => {
+                throw new Error(error);
+            });
 
             this.state.searchResults = data.results;
+            this.state.isSuccess = true;
 
         } catch (error) {
-            this.state.isSuccess =false;
+            this.state.isSuccess = false;
+            this.state.errorMessage = error.message;
+        }
+    }
+
+    async selectMovie(id) {
+
+        try {
+
+            let request,
+                timeOut,
+                data;
+
+            timeOut = new Promise((_, reject) => {
+                setTimeout(() => {
+                    reject('Took too long to respond, please try again later');
+                }, 20000);
+            });
+
+            request = fetch(`${baseUrl}/Title/${apiKey}/${id}`);
+
+            data = await Promise.race([request, timeOut]).then(res => res.json()).catch((error) => {
+
+                throw new Error(error);
+            });
+
+            this.state.selectedMovie = data;
+            this.state.isSuccess = true;
+
+        } catch (error) {
+            this.state.isSuccess = false;
             this.state.errorMessage = error.message;
         }
     }

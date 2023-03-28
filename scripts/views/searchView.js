@@ -3,18 +3,41 @@ class searchView {
     #errorMessage = ``;
     #parentElement = document.querySelector('.search');
 
+    renderLoading() {
+
+        this.#parentElement.querySelector('.search-result').classList.add('show');
+
+        this.#parentElement.querySelector('.search-result').innerHTML = '';
+
+        const markup = `
+        <div class="preloader">
+            <div class="spinner"></div>
+        </div>`;
+
+        this.#parentElement.querySelector('.search-result').insertAdjacentHTML('afterBegin', markup);
+    }
+
     render(movies) {
 
         this.#parentElement.querySelector('.search-result').classList.add('show');
 
         this.#parentElement.querySelector('.search-result').innerHTML = '';
 
+        if (movies.length === 0) {
+            
+            const markup = `<span>No matching found</span>`;
+            
+            this.#parentElement.querySelector('.search-result').insertAdjacentHTML('afterbegin', markup);
+
+            return;
+        }
+
         movies.forEach(movie => {
 
             const markup = `
-            <a class="result-item">
+            <a class="result-item" data-id="${movie.id}">
                 <div class="result-img">
-                    <img src="${movie.image}" alt="movie-image">
+                    <img src="${movie.image}" alt="Movie image">
                 </div>
                 <div class="result-description">
                     <div class="result-name">
@@ -36,18 +59,14 @@ class searchView {
 
         this.#errorMessage = message;
 
-        let messageElement = `<span>${this.#errorMessage}</span>`;
+        const markup = `<span>${this.#errorMessage}</span>`;
 
         this.#parentElement.querySelector('.search-result').innerHTML = '';
 
-        this.#parentElement.querySelector('.search-result').insertAdjacentHTML("afterbegin", messageElement);
+        this.#parentElement.querySelector('.search-result').insertAdjacentHTML("afterbegin", markup);
     }
 
     searchHandler(handler) {
-
-        this.typeHandler();
-
-        this.selectGenreHandler();
 
         this.#parentElement.addEventListener('click', function (e) {
 
@@ -90,13 +109,35 @@ class searchView {
         const selectOptions = [...selectGenreBox.querySelectorAll('.select-value')];
 
         selectOptions.forEach(option => {
-            
+
             option.addEventListener('click', (e) => {
                 selectGenreBox.querySelector('.select-heading span').innerHTML = e.target.innerHTML;
                 selectGenreBox.querySelector('.select-heading span').dataset.value = e.target.dataset.value;
                 selectGenreBox.querySelector('.select-container').classList.remove('open');
             });
         });
+    }
+
+    selectMovieHandler(handler) {
+
+        this.#parentElement.addEventListener('click', (e) => {
+
+            const selectedMovie = e.target.closest('.result-item');
+
+            if (!selectedMovie)
+                return;
+
+            this.#parentElement.querySelector('.search-result').classList.remove('show');
+
+            this.#parentElement.querySelector('.search-field').value = '';
+
+            handler(selectedMovie.dataset.id);
+        });
+    }
+
+    init() {
+        this.typeHandler();
+        this.selectGenreHandler();
     }
 }
 
