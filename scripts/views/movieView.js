@@ -19,17 +19,39 @@ class searchView {
 
     render(movie) {
 
-        this.#parentElement.querySelector('.content').innerHTML = '';
+        try {
+            this.#parentElement.querySelector('.content').innerHTML = '';
 
-        let relatedMoviesSection = '';
+            let relatedMoviesSection = '';
 
-        if (movie.similars.length !== 0) {
+            if (movie.similars.length !== 0) {
 
-            let relatedMovies = [];
+                let relatedMoviesArray = [];
+                let fillStarArray = [];
 
-            movie.similars.forEach(similar => {
+                movie.similars.forEach((similar, index) => {
 
-                relatedMovies.push(`
+                    if (similar.imDbRating) {
+
+                        fillStarArray = [];
+
+                        const imdbRating = Math.floor(Number(similar.imDbRating));
+
+                        const fillStarNumber = Math.floor(imdbRating / 2);
+
+                        console.log(`Movie ${index + 1}: ${fillStarNumber}`);
+
+                        for (let i = 0; i < fillStarNumber; i++) {
+
+                            fillStarArray.push(`
+                            <svg width="12" height="12" fill="#D9A61C">
+                                    <use xlink:href="./icons/solid.svg#star" />
+                                </svg>
+                            `);
+                        }
+                    }
+
+                    relatedMoviesArray.push(`
                 <div class="swiper-slide" data-id="${similar.id}">
                     <div class="movie-img">
                         <img src="${similar.image}" alt="movie poster">
@@ -42,46 +64,52 @@ class searchView {
                         <div class="movie-rate">
                             <span>${similar.imDbRating || 'Unknown'}</span>
                             <div class="stars">
-                                <svg width="12" height="12" fill="#D9A61C">
-                                    <use xlink:href="./icons/solid.svg#star" />
-                                </svg>
-                                <svg width="12" height="12" fill="#D9A61C">
-                                    <use xlink:href="./icons/solid.svg#star" />
-                                </svg>
-                                <svg width="12" height="12" fill="#D9A61C">
-                                    <use xlink:href="./icons/solid.svg#star" />
-                                </svg>
-                                <svg width="12" height="12" fill="#D9A61C">
-                                    <use xlink:href="./icons/solid.svg#star" />
-                                </svg>
-                                <svg width="12" height="12" fill="#D9A61C">
-                                    <use xlink:href="./icons/regular.svg#star" />
-                                </svg>
+                                ${fillStarArray.join('')}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>`)
-            });
+                });
 
-            relatedMoviesSection = `
+                relatedMoviesSection = `
                 <div class="related-movies">
                     <div class="title">
                         <h2>Related Movies</h2>
                     </div>
                     <div class="swiper">
                         <div class="swiper-wrapper">
-                            ${relatedMovies}
+                            ${relatedMoviesArray.join('')}
                         </div>
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
                     </div>
                 </div >`;
+            }
 
-            this.sliderHandler();
-        }
+            let fillStarArray = [];
 
-        const markup = `
+            if (movie.imDbRating) {
+
+                fillStarArray = [];
+
+                const imdbRating = Math.floor(Number(movie.imDbRating));
+
+                const fillStarNumber = Math.floor(imdbRating / 2);
+
+                console.log(`Selected Movie : ${fillStarNumber}`);
+
+                for (let i = 0; i < fillStarNumber; i++) {
+
+                    fillStarArray.push(`
+                    <svg width="12" height="12" fill="#D9A61C">
+                            <use xlink:href="./icons/solid.svg#star" />
+                        </svg>
+                    `);
+                }
+            }
+
+            const markup = `
             <div class="selected-movie">
                 <div class="title">
                     <h2>Movie</h2>
@@ -97,21 +125,7 @@ class searchView {
                         <div class="movie-rate">
                             <span>${movie.imDbRating || 'Unknown'}</span>
                             <div class="stars">
-                                <svg width="12" height="12" fill="#D9A61C">
-                                    <use xlink:href="./icons/solid.svg#star" />
-                                </svg>
-                                <svg width="12" height="12" fill="#D9A61C">
-                                    <use xlink:href="./icons/solid.svg#star" />
-                                </svg>
-                                <svg width="12" height="12" fill="#D9A61C">
-                                    <use xlink:href="./icons/solid.svg#star" />
-                                </svg>
-                                <svg width="12" height="12" fill="#D9A61C">
-                                    <use xlink:href="./icons/solid.svg#star" />
-                                </svg>
-                                <svg width="12" height="12" fill="#D9A61C">
-                                    <use xlink:href="./icons/regular.svg#star" />
-                                </svg>
+                                ${fillStarArray.join('')}
                             </div>
                         </div>
                     </div>
@@ -190,7 +204,14 @@ class searchView {
             </div>
             ${relatedMoviesSection} `;
 
-        this.#parentElement.querySelector('.content').insertAdjacentHTML('afterbegin', markup);
+            this.#parentElement.querySelector('.content').insertAdjacentHTML('afterbegin', markup);
+
+            if (movie.similars.length !== 0)
+                this.sliderHandler();
+
+        } catch (_) {
+            this.renderError(movie.errorMessage);
+        }
     }
 
     renderError(message) {
@@ -208,7 +229,7 @@ class searchView {
 
         this.#parentElement.addEventListener('click', function (e) {
 
-            const sliderItem = e.target.closest('.movie-item');
+            const sliderItem = e.target.closest('.swiper-slide');
 
             if (!sliderItem)
                 return;
@@ -223,19 +244,14 @@ class searchView {
             grabCursor: true,
             loop: true,
             slidesPerView: 3,
-            spaceBetween: 300,
             speed: 400,
-            spaceBetween: 100,
+            spaceBetween: 75,
 
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
         });
-
-        const swiperProp = this.#parentElement.querySelector('.swiper').swiper;
-
-        console.log(swiperProp);
     }
 }
 
