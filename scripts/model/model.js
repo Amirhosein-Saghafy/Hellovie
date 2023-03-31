@@ -9,12 +9,12 @@ class model {
         isSuccess: true,
     }
 
-    async search(searchValue, selectedGenre = undefined) {
+    async search(searchValue, selectedGenre) {
 
         try {
 
-            let request,
-                timeOut,
+            let timeOut,
+                endPoint,
                 data;
 
             timeOut = new Promise((_, reject) => {
@@ -24,11 +24,12 @@ class model {
             });
 
             if (selectedGenre)
-                request = fetch(`${baseUrl}/AdvancedSearch/${apiKey}/?title=${searchValue}&genres=${selectedGenre.toLowerCase()}`);
+                endPoint = fetch(`${baseUrl}/AdvancedSearch/${apiKey}/?title=${searchValue}&genres=${selectedGenre.toLowerCase()}`);
             else
-                request = fetch(`${baseUrl}/SearchTitle/${apiKey}/${searchValue}`);
+                endPoint = fetch(`${baseUrl}/SearchTitle/${apiKey}/${searchValue}`);
 
-            data = await Promise.race([request, timeOut]).then(res => res.json()).catch((error) => {
+            data = await Promise.race([endPoint, timeOut]).then(res => res.json()).catch((error) => {
+
                 throw new Error(error);
             });
 
@@ -45,8 +46,8 @@ class model {
 
         try {
 
-            let request,
-                timeOut,
+            let timeOut,
+                endPoint,
                 data;
 
             timeOut = new Promise((_, reject) => {
@@ -55,9 +56,9 @@ class model {
                 }, 20000);
             });
 
-            request = fetch(`${baseUrl}/Title/${apiKey}/${id}`);
+            endPoint = fetch(`${baseUrl}/Title/${apiKey}/${id}`);
 
-            data = await Promise.race([request, timeOut]).then(res => res.json()).catch((error) => {
+            data = await Promise.race([endPoint, timeOut]).then(res => res.json()).catch((error) => {
 
                 throw new Error(error);
             });

@@ -23,15 +23,6 @@ class searchView {
 
         this.#parentElement.querySelector('.search-result').innerHTML = '';
 
-        if (movies.length === 0) {
-            
-            const markup = `<span>No matching found</span>`;
-            
-            this.#parentElement.querySelector('.search-result').insertAdjacentHTML('afterbegin', markup);
-
-            return;
-        }
-
         movies.forEach(movie => {
 
             const markup = `

@@ -23,6 +23,9 @@ class controller {
         if (!model.state.isSuccess)
             return searchView.renderError(model.state.errorMessage);
 
+        if (model.state.searchResults.length === 0)
+            return searchView.renderError('No matching found');
+
         searchView.render(model.state.searchResults);
     }
 
@@ -34,6 +37,9 @@ class controller {
 
         if (!model.state.isSuccess)
             return movieView.renderError(model.state.errorMessage);
+
+        if (model.state.selectedMovie.errorMessage)
+            return movieView.renderError(model.state.selectedMovie.errorMessage);
 
         movieView.render(model.state.selectedMovie);
     }

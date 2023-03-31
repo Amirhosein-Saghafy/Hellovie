@@ -19,39 +19,36 @@ class searchView {
 
     render(movie) {
 
-        try {
-            this.#parentElement.querySelector('.content').innerHTML = '';
+        this.#parentElement.querySelector('.content').innerHTML = '';
 
-            let relatedMoviesSection = '';
+        let relatedMoviesSection = '';
 
-            if (movie.similars.length !== 0) {
+        if (movie.similars.length !== 0) {
 
-                let relatedMoviesArray = [];
-                let fillStarArray = [];
+            let relatedMoviesArray = [];
+            let fillStarArray = [];
 
-                movie.similars.forEach((similar, index) => {
+            movie.similars.forEach((similar, index) => {
 
-                    if (similar.imDbRating) {
+                if (similar.imDbRating) {
 
-                        fillStarArray = [];
+                    fillStarArray = [];
 
-                        const imdbRating = Math.floor(Number(similar.imDbRating));
+                    const imdbRating = Math.floor(Number(similar.imDbRating));
 
-                        const fillStarNumber = Math.floor(imdbRating / 2);
+                    const fillStarNumber = Math.floor(imdbRating / 2);
 
-                        console.log(`Movie ${index + 1}: ${fillStarNumber}`);
+                    for (let i = 0; i < fillStarNumber; i++) {
 
-                        for (let i = 0; i < fillStarNumber; i++) {
-
-                            fillStarArray.push(`
+                        fillStarArray.push(`
                             <svg width="12" height="12" fill="#D9A61C">
                                     <use xlink:href="./icons/solid.svg#star" />
                                 </svg>
                             `);
-                        }
                     }
+                }
 
-                    relatedMoviesArray.push(`
+                relatedMoviesArray.push(`
                 <div class="swiper-slide" data-id="${similar.id}">
                     <div class="movie-img">
                         <img src="${similar.image}" alt="movie poster">
@@ -70,9 +67,9 @@ class searchView {
                     </div>
                 </div>
             </div>`)
-                });
+            });
 
-                relatedMoviesSection = `
+            relatedMoviesSection = `
                 <div class="related-movies">
                     <div class="title">
                         <h2>Related Movies</h2>
@@ -85,31 +82,29 @@ class searchView {
                         <div class="swiper-button-next"></div>
                     </div>
                 </div >`;
-            }
+        }
 
-            let fillStarArray = [];
+        let fillStarArray = [];
 
-            if (movie.imDbRating) {
+        if (movie.imDbRating) {
 
-                fillStarArray = [];
+            fillStarArray = [];
 
-                const imdbRating = Math.floor(Number(movie.imDbRating));
+            const imdbRating = Math.floor(Number(movie.imDbRating));
 
-                const fillStarNumber = Math.floor(imdbRating / 2);
+            const fillStarNumber = Math.floor(imdbRating / 2);
 
-                console.log(`Selected Movie : ${fillStarNumber}`);
+            for (let i = 0; i < fillStarNumber; i++) {
 
-                for (let i = 0; i < fillStarNumber; i++) {
-
-                    fillStarArray.push(`
+                fillStarArray.push(`
                     <svg width="12" height="12" fill="#D9A61C">
                             <use xlink:href="./icons/solid.svg#star" />
                         </svg>
                     `);
-                }
             }
+        }
 
-            const markup = `
+        const markup = `
             <div class="selected-movie">
                 <div class="title">
                     <h2>Movie</h2>
@@ -204,14 +199,10 @@ class searchView {
             </div>
             ${relatedMoviesSection} `;
 
-            this.#parentElement.querySelector('.content').insertAdjacentHTML('afterbegin', markup);
+        this.#parentElement.querySelector('.content').insertAdjacentHTML('afterbegin', markup);
 
-            if (movie.similars.length !== 0)
-                this.sliderHandler();
-
-        } catch (_) {
-            this.renderError(movie.errorMessage);
-        }
+        if (movie.similars.length !== 0)
+            this.sliderHandler();
     }
 
     renderError(message) {
