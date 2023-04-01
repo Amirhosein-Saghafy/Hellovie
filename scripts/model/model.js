@@ -71,38 +71,6 @@ class model {
             this.state.errorMessage = error.message;
         }
     }
-
-    async loadMovie(id) {
-
-        try {
-
-            let timeOut,
-                endPoint,
-                data;
-
-            timeOut = new Promise((_, reject) => {
-                setTimeout(() => {
-                    reject('Took too long to respond, please try again later');
-                }, 20000);
-            });
-
-            endPoint = fetch(`${movieUrl}?id=${id}`);
-
-            data = await Promise.race([endPoint, timeOut]).then(res => res.json()).catch((error) => {
-
-                throw new Error(error);
-            });
-
-            console.log(data);
-
-            this.state.selectedMovie = data;
-            this.state.isSuccess = true;
-
-        } catch (error) {
-            this.state.isSuccess = false;
-            this.state.errorMessage = error.message;
-        }
-    }
 }
 
 export default new model();

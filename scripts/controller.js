@@ -34,7 +34,6 @@ class controller {
         movieView.renderLoading();
 
         await model.selectMovie(id);
-        model.loadMovie(id);
 
         if (!model.state.isSuccess)
             return movieView.renderError(model.state.errorMessage);
