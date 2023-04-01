@@ -110,10 +110,8 @@ class searchView {
                     <h2>Movie</h2>
                 </div>
                 <div class="movie-content">
-                    <img src="${movie.image}" alt="">
-                    <div class="movie-video">
-                        <embed src="https://www.2embed.to/embed/imdb/movie?id=${movie.id}" type=""video></embed>
-                    </div>
+                    <img src="${movie.image}" alt="">                    
+                    <iframe src="https://www.2embed.to/embed/imdb/movie?id=${movie.id}" type="video" ></iframe>
                 </div>
                 <div class="movie-details">
                     <div class="movie-header">

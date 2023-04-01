@@ -333,19 +333,19 @@ main .movie .content .selected-movie .title h2 {
   margin-bottom: 3rem;
 }
 main .movie .content .selected-movie .movie-content {
-  width: -moz-max-content;
-  width: max-content;
+  display: flex;
+  justify-content: space-between;
 }
 main .movie .content .selected-movie .movie-content img {
   width: auto;
   max-width: 100%;
   max-height: 500px;
-  border: 5px solid #F6EFF0;
+  border: 3px solid #F6EFF0;
 }
-main .movie .content .selected-movie .movie-content .movie-video {
-  width: -moz-max-content;
-  width: max-content;
-  height: 100%;
+main .movie .content .selected-movie .movie-content iframe {
+  width: 850px;
+  height: 500px;
+  border: 3px solid #F6EFF0;
 }
 main .movie .content .selected-movie .movie-details {
   display: flex;
