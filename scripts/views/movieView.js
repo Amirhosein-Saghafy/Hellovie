@@ -109,8 +109,9 @@ class searchView {
                 <div class="title">
                     <h2>Movie</h2>
                 </div>
-                <div class="movie-poster">
+                <div class="movie-content">
                     <img src="${movie.image}" alt="">
+                    <div class="movie-video"></div>
                 </div>
                 <div class="movie-details">
                     <div class="movie-header">

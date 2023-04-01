@@ -129,18 +129,31 @@ main nav .search .search-button .search-button-border {
 main nav .search .search-result {
   display: none;
   position: absolute;
-  width: 200%;
+  width: 180%;
   top: 110%;
   left: 0;
   background-color: #3A3637;
-  padding: 1rem 3rem;
+  padding: 1rem;
   box-shadow: 2px 2px 4px #D9A61C;
   max-height: 500px;
   overflow-y: auto;
   z-index: 1;
+  overflow-x: hidden;
 }
 main nav .search .search-result.show {
   display: block;
+}
+main nav .search .search-result::-webkit-scrollbar {
+  width: 12px;
+}
+main nav .search .search-result::-webkit-scrollbar-button {
+  background-color: #272728;
+}
+main nav .search .search-result::-webkit-scrollbar-thumb {
+  background-color: #D9A61C;
+}
+main nav .search .search-result::-webkit-scrollbar-track {
+  background-color: #272728;
 }
 @keyframes rotatePreloader {
   0% {
@@ -176,12 +189,15 @@ main nav .search .search-result .preloader .spinner {
 }
 main nav .search .search-result .result-item {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   padding: 1.5rem 0;
-  border-bottom: 1px solid #F6EFF0;
   cursor: pointer;
+  transition: none;
+}
+main nav .search .search-result .result-item:hover {
+  background-color: #272728;
 }
 main nav .search .search-result .result-item:last-child {
   border-bottom: none;
@@ -316,16 +332,20 @@ main .movie .content .selected-movie .title h2 {
   font-weight: 400;
   margin-bottom: 3rem;
 }
-main .movie .content .selected-movie .movie-poster {
+main .movie .content .selected-movie .movie-content {
   width: -moz-max-content;
   width: max-content;
-  margin: 0 auto;
 }
-main .movie .content .selected-movie .movie-poster img {
+main .movie .content .selected-movie .movie-content img {
   width: auto;
   max-width: 100%;
   max-height: 500px;
   border: 5px solid #F6EFF0;
+}
+main .movie .content .selected-movie .movie-content .movie-video {
+  width: -moz-max-content;
+  width: max-content;
+  height: 100%;
 }
 main .movie .content .selected-movie .movie-details {
   display: flex;
@@ -560,7 +580,8 @@ main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie
   font-weight: 200;
   line-height: 22px;
 }
-main .movie .content .related-movies .swiper .swiper-button-prev, main .movie .content .related-movies .swiper .swiper-button-next {
+main .movie .content .related-movies .swiper .swiper-button-prev,
+main .movie .content .related-movies .swiper .swiper-button-next {
   color: #D9A61C;
 }
 main .movie .content > h3 {
