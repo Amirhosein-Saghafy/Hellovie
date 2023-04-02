@@ -56,7 +56,7 @@ class model {
                 }, 20000);
             });
 
-            endPoint = fetch(`${baseUrl}/Title/${apiKey}/${id}`);
+            endPoint = fetch(`${baseUrl}/Title/${apiKey}/${id}/Images`);
 
             data = await Promise.race([endPoint, timeOut]).then(res => res.json()).catch((error) => {
 

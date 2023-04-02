@@ -374,6 +374,10 @@ main {
 
             .selected-movie {
 
+                &{
+                    width: 100%;
+                }
+
                 .title {
 
                     h2 {
@@ -409,6 +413,7 @@ main {
                 .movie-details {
 
                     & {
+                        width: 100%;
                         display: flex;
                         flex-direction: column;
                     }
@@ -419,7 +424,7 @@ main {
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
-                            margin-top: 2rem;
+                            margin-top: 4rem;
                         }
 
                         .movie-title {
@@ -450,9 +455,10 @@ main {
                     .movie-body {
 
                         & {
+                            width: 100%;
                             display: flex;
                             flex-direction: column;
-                            margin: 1rem 0;
+                            margin: 2rem 0;
                         }
 
                         .movie-realase {
@@ -576,6 +582,67 @@ main {
                                 font-size: 20px;
                                 color: base.$white;
                                 line-height: 35px;
+                            }
+                        }
+
+                        .movie-actors-images {
+                            
+                            & {
+                                width: 100%;
+                            }
+
+                            .title {
+                                
+                                & {
+                                    width: 100%;
+                                }
+
+                                h2 {
+                                    font-size: 26px;
+                                    color: base.$white;
+                                    font-family: 'Exo light';
+                                    font-weight: 400;
+                                    margin: 5rem 0 2rem 0;
+                                }
+                            }
+
+                            .actor-image {
+
+                                & {
+                                    width: 100%;
+                                    height: auto;
+                                }
+
+                                img {
+                                    width: inherit;
+                                    height: 500px;
+                                    border: 3px solid base.$white;
+                                }
+                            }
+
+                            .actor-name {
+
+                                & {
+                                    display: flex;
+                                    margin-top: 1rem;
+                                    justify-content: center;
+                                }
+
+                                h4 {
+                                    font-size: 20px;
+                                    color: base.$white;
+                                    margin: 0 0.5rem;
+                                }
+
+                                span {
+                                    font-size: 20px;
+                                    color: base.$gold;
+                                }
+                            }
+
+                            .swiper-button-prev,
+                            .swiper-button-next {
+                                color: base.$gold;
                             }
                         }
                     }

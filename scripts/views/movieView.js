@@ -21,14 +21,50 @@ class searchView {
 
         this.#parentElement.querySelector('.content').innerHTML = '';
 
+        let actorsImagesSection = '';
         let relatedMoviesSection = '';
+
+        if (movie.actorList.length !== 0) {
+
+            let actorsImagesArray = [];
+
+            movie.actorList.forEach(actor => {
+
+                actorsImagesArray.push(`
+                <div class="swiper-slide">
+                    <div class="actor-image">
+                        <img src="${actor.image}" alt="${actor.name}">
+                    </div>
+                    <div class="actor-name">
+                        <h4>${actor.name}</h4>
+                        <span>as</span>
+                        <h4>${actor.asCharacter}</h4>
+                    </div>
+                </div>
+                `);
+            });
+
+            actorsImagesSection = `
+                <div class="movie-actors-images">
+                    <div class="title">
+                        <h2>Actors Images</h2>
+                    </div>
+                    <div class="swiper swiper1">
+                        <div class="swiper-wrapper">
+                            ${actorsImagesArray.join('')}
+                        </div>
+                        <div class="swiper-button-prev swiper-button-prev1"></div>
+                        <div class="swiper-button-next swiper-button-next1"></div>
+                    </div>
+                </div>`;
+        }
 
         if (movie.similars.length !== 0) {
 
             let relatedMoviesArray = [];
             let fillStarArray = [];
 
-            movie.similars.forEach((similar, index) => {
+            movie.similars.forEach(similar => {
 
                 if (similar.imDbRating) {
 
@@ -74,12 +110,12 @@ class searchView {
                     <div class="title">
                         <h2>Related Movies</h2>
                     </div>
-                    <div class="swiper">
+                    <div class="swiper swiper2">
                         <div class="swiper-wrapper">
                             ${relatedMoviesArray.join('')}
                         </div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev swiper-button-prev2"></div>
+                        <div class="swiper-button-next swiper-button-next2"></div>
                     </div>
                 </div >`;
         }
@@ -110,7 +146,7 @@ class searchView {
                     <h2>Movie</h2>
                 </div>
                 <div class="movie-content">
-                    <img src="${movie.image}" alt="">                    
+                    <img src="${movie.image}" alt="">
                     <iframe src="https://www.2embed.to/embed/imdb/movie?id=${movie.id}" type="video" ></iframe>
                 </div>
                 <div class="movie-details">
@@ -195,6 +231,7 @@ class searchView {
                             ${movie.plot || 'Unknown'}
                             </p>
                         </div>
+                        ${actorsImagesSection}
                     </div>
                 </div>
             </div>
@@ -232,7 +269,7 @@ class searchView {
 
     sliderHandler() {
 
-        const swiper = new Swiper('.swiper', {
+        const swiper = new Swiper('.swiper1', {
             grabCursor: true,
             loop: true,
             slidesPerView: 3,
@@ -240,8 +277,21 @@ class searchView {
             spaceBetween: 75,
 
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.swiper-button-next1',
+                prevEl: '.swiper-button-prev1',
+            },
+        });
+
+        const swiper2 = new Swiper('.swiper2', {
+            grabCursor: true,
+            loop: true,
+            slidesPerView: 3,
+            speed: 400,
+            spaceBetween: 75,
+
+            navigation: {
+                nextEl: '.swiper-button-next2',
+                prevEl: '.swiper-button-prev2',
             },
         });
     }

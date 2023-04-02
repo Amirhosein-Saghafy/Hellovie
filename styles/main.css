@@ -325,6 +325,9 @@ main .movie .content .preloader .spinner {
   border-radius: 50%;
   animation: rotatePreloader 800ms linear 0s infinite normal forwards;
 }
+main .movie .content .selected-movie {
+  width: 100%;
+}
 main .movie .content .selected-movie .title h2 {
   font-size: 32px;
   color: #F6EFF0;
@@ -348,6 +351,7 @@ main .movie .content .selected-movie .movie-content iframe {
   border: 3px solid #F6EFF0;
 }
 main .movie .content .selected-movie .movie-details {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -355,7 +359,7 @@ main .movie .content .selected-movie .movie-details .movie-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 main .movie .content .selected-movie .movie-details .movie-header .movie-title h4 {
   color: #F6EFF0;
@@ -373,14 +377,15 @@ main .movie .content .selected-movie .movie-details .movie-header .movie-rate sp
   color: #D9A61C;
 }
 main .movie .content .selected-movie .movie-details .movie-body {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-realase {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-realase .movie-type span {
   display: inline-block;
@@ -399,7 +404,7 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-realase .
 main .movie .content .selected-movie .movie-details .movie-body .movie-genres {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-genres span {
   display: inline-block;
@@ -411,7 +416,7 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-genres sp
 main .movie .content .selected-movie .movie-details .movie-body .movie-duration {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-duration span {
   display: inline-block;
@@ -423,7 +428,7 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-duration 
 main .movie .content .selected-movie .movie-details .movie-body .movie-languages {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-languages ul {
   display: flex;
@@ -438,7 +443,7 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-languages
 main .movie .content .selected-movie .movie-details .movie-body .metacritic {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 main .movie .content .selected-movie .movie-details .movie-body .metacritic span {
   display: inline-block;
@@ -450,14 +455,14 @@ main .movie .content .selected-movie .movie-details .movie-body .metacritic span
 main .movie .content .selected-movie .movie-details .movie-body .movie-crew {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   flex-direction: column;
   align-items: flex-start;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-crew .directors {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-crew .directors span,
 main .movie .content .selected-movie .movie-details .movie-body .movie-crew .directors label {
@@ -470,7 +475,7 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-crew .dir
 main .movie .content .selected-movie .movie-details .movie-body .movie-crew .writers {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-crew .writers span,
 main .movie .content .selected-movie .movie-details .movie-body .movie-crew .writers label {
@@ -483,7 +488,7 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-crew .wri
 main .movie .content .selected-movie .movie-details .movie-body .movie-crew .stars {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
   margin-bottom: 0;
 }
@@ -507,6 +512,46 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-descripti
   font-size: 20px;
   color: #F6EFF0;
   line-height: 35px;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images {
+  width: 100%;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .title {
+  width: 100%;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .title h2 {
+  font-size: 26px;
+  color: #F6EFF0;
+  font-family: "Exo light";
+  font-weight: 400;
+  margin: 5rem 0 2rem 0;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-image {
+  width: 100%;
+  height: auto;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-image img {
+  width: inherit;
+  height: 500px;
+  border: 3px solid #F6EFF0;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-name {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-name h4 {
+  font-size: 20px;
+  color: #F6EFF0;
+  margin: 0 0.5rem;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-name span {
+  font-size: 20px;
+  color: #D9A61C;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .swiper-button-prev,
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .swiper-button-next {
+  color: #D9A61C;
 }
 main .movie .content .related-movies {
   width: 100%;
