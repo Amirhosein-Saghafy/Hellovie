@@ -258,7 +258,7 @@ class searchView {
 
         this.#parentElement.addEventListener('click', function (e) {
 
-            const sliderItem = e.target.closest('.swiper-slide');
+            const sliderItem = e.target.closest('.movie-slide');
 
             if (!sliderItem)
                 return;
