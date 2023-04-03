@@ -350,6 +350,41 @@ main .movie .content .selected-movie .movie-content iframe {
   height: 500px;
   border: 3px solid #F6EFF0;
 }
+main .movie .content .selected-movie .movie-content .movie-image {
+  position: relative;
+}
+main .movie .content .selected-movie .movie-content .movie-image .preloader {
+  position: absolute;
+  width: 350px;
+  height: 500px;
+  left: 0;
+  top: 0;
+  background-color: #3A3637;
+  border: 2px solid #F6EFF0;
+}
+main .movie .content .selected-movie .movie-content .movie-image .preloader.hide {
+  display: none;
+}
+@keyframes rotateSpinner {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+main .movie .content .selected-movie .movie-content .movie-image .preloader .spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #D9A61C;
+  border-bottom: 2px solid transparent;
+  animation: rotateSpinner 400ms linear 0s infinite normal forwards;
+}
 main .movie .content .selected-movie .movie-details {
   width: 100%;
   display: flex;
@@ -527,6 +562,7 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-actors-im
   margin: 5rem 0 2rem 0;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-image {
+  position: relative;
   width: 100%;
   height: auto;
 }
@@ -534,6 +570,38 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-actors-im
   width: inherit;
   height: 500px;
   border: 3px solid #F6EFF0;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-image .preloader {
+  position: absolute;
+  width: 367px;
+  height: 500px;
+  left: 0;
+  top: 0;
+  background-color: #3A3637;
+  border: 3px solid #F6EFF0;
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-image .preloader.hide {
+  display: none;
+}
+@keyframes rotateSpinner {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-image .preloader .spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #D9A61C;
+  border-bottom: 2px solid transparent;
+  animation: rotateSpinner 800ms linear 0s infinite normal forwards;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-name {
   display: flex;
@@ -551,82 +619,84 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-actors-im
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .swiper-button-prev,
 main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .swiper-button-next {
+  top: 43%;
   color: #D9A61C;
 }
-main .movie .content .related-movies {
+main .movie .content .similar-movies {
   width: 100%;
 }
-main .movie .content .related-movies .title h2 {
+main .movie .content .similar-movies .title h2 {
   font-size: 26px;
   color: #F6EFF0;
   font-family: "Exo light";
   font-weight: 400;
   margin-top: 5rem;
 }
-main .movie .content .related-movies .swiper {
+main .movie .content .similar-movies .swiper {
   width: 100%;
   height: 600px;
 }
-main .movie .content .related-movies .swiper .swiper-slide {
+main .movie .content .similar-movies .swiper .swiper-slide {
   border-radius: 16px;
   cursor: pointer;
 }
-main .movie .content .related-movies .swiper .swiper-slide .movie-img {
+main .movie .content .similar-movies .swiper .swiper-slide .movie-img {
   width: 100%;
   height: 500px;
   transform: translateY(25px);
   border-radius: 16px;
   overflow: hidden;
 }
-main .movie .content .related-movies .swiper .swiper-slide .movie-img img {
+main .movie .content .similar-movies .swiper .swiper-slide .movie-img img {
   width: inherit;
   height: inherit;
 }
-main .movie .content .related-movies .swiper .swiper-slide .movie-details {
+main .movie .content .similar-movies .swiper .swiper-slide .movie-details {
   height: auto;
   position: relative;
   border-radius: 16px;
   background-color: #3A3637;
   box-shadow: 5px 5px 5px -3px #D9A61C;
 }
-main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-header {
+main .movie .content .similar-movies .swiper .swiper-slide .movie-details .movie-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0.75rem 1rem;
 }
-main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-header .movie-title {
+main .movie .content .similar-movies .swiper .swiper-slide .movie-details .movie-header .movie-title {
   max-width: 230px;
 }
-main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-header .movie-title h4 {
+main .movie .content .similar-movies .swiper .swiper-slide .movie-details .movie-header .movie-title h4 {
   color: #D9A61C;
   font-size: 22px;
   font-weight: 200;
   text-transform: capitalize;
 }
-main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-header .movie-rate {
+main .movie .content .similar-movies .swiper .swiper-slide .movie-details .movie-header .movie-rate {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-header .movie-rate span {
+main .movie .content .similar-movies .swiper .swiper-slide .movie-details .movie-header .movie-rate span {
   font-size: 32px;
   color: #D9A61C;
 }
-main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-body {
+main .movie .content .similar-movies .swiper .swiper-slide .movie-details .movie-body {
   width: 100%;
   display: flex;
   padding: 0.75rem 1rem;
 }
-main .movie .content .related-movies .swiper .swiper-slide .movie-details .movie-body p {
+main .movie .content .similar-movies .swiper .swiper-slide .movie-details .movie-body p {
   font-size: 14px;
   color: #F6EFF0;
   font-weight: 200;
   line-height: 22px;
 }
-main .movie .content .related-movies .swiper .swiper-button-prev,
-main .movie .content .related-movies .swiper .swiper-button-next {
+main .movie .content .similar-movies .swiper .swiper-button-prev,
+main .movie .content .similar-movies .swiper .swiper-button-next {
+  top: 43%;
   color: #D9A61C;
 }
 main .movie .content > h3 {

@@ -374,7 +374,7 @@ main {
 
             .selected-movie {
 
-                &{
+                & {
                     width: 100%;
                 }
 
@@ -407,6 +407,54 @@ main {
                         width: 850px;
                         height: 500px;
                         border: 3px solid base.$white;
+                    }
+
+                    .movie-image {
+
+                        & {
+                            position: relative;
+                        }
+
+
+                        .preloader {
+
+                            & {
+                                position: absolute;
+                                width: 350px;
+                                height: 500px;
+                                left: 0;
+                                top: 0;
+                                background-color: base.$dark;
+                                border: 2px solid base.$white;
+                            }
+
+                            &.hide {
+                                display: none;
+                            }
+
+                            @keyframes rotateSpinner {
+                                from {
+                                    transform: rotateZ(0deg);
+                                }
+
+                                to {
+                                    transform: rotateZ(360deg);
+                                }
+                            }
+
+                            .spinner {
+                                position: absolute;
+                                left: 50%;
+                                top: 50%;
+                                transform: translate(-50%, -50%);
+                                width: 25px;
+                                height: 25px;
+                                border-radius: 50%;
+                                border: 2px solid base.$gold;
+                                border-bottom: 2px solid transparent;
+                                animation: rotateSpinner 400ms linear 0s infinite normal forwards;
+                            }
+                        }
                     }
                 }
 
@@ -586,13 +634,13 @@ main {
                         }
 
                         .movie-actors-images {
-                            
+
                             & {
                                 width: 100%;
                             }
 
                             .title {
-                                
+
                                 & {
                                     width: 100%;
                                 }
@@ -609,6 +657,7 @@ main {
                             .actor-image {
 
                                 & {
+                                    position: relative;
                                     width: 100%;
                                     height: auto;
                                 }
@@ -617,6 +666,46 @@ main {
                                     width: inherit;
                                     height: 500px;
                                     border: 3px solid base.$white;
+                                }
+
+                                .preloader {
+
+                                    & {
+                                        position: absolute;
+                                        width: 367px;
+                                        height: 500px;
+                                        left: 0;
+                                        top: 0;
+                                        background-color: base.$dark;
+                                        border: 3px solid base.$white;
+                                    }
+
+                                    &.hide {
+                                        display: none;
+                                    }
+
+                                    @keyframes rotateSpinner {
+                                        from {
+                                            transform: rotateZ(0deg);
+                                        }
+
+                                        to {
+                                            transform: rotateZ(360deg);
+                                        }
+                                    }
+
+                                    .spinner {
+                                        position: absolute;
+                                        left: 50%;
+                                        top: 50%;
+                                        transform: translate(-50%, -50%);
+                                        width: 25px;
+                                        height: 25px;
+                                        border-radius: 50%;
+                                        border: 2px solid base.$gold;
+                                        border-bottom: 2px solid transparent;
+                                        animation: rotateSpinner 800ms linear 0s infinite normal forwards;
+                                    }
                                 }
                             }
 
@@ -642,6 +731,7 @@ main {
 
                             .swiper-button-prev,
                             .swiper-button-next {
+                                top: 43%;
                                 color: base.$gold;
                             }
                         }
@@ -649,7 +739,7 @@ main {
                 }
             }
 
-            .related-movies {
+            .similar-movies {
 
                 & {
                     width: 100%;
@@ -763,6 +853,7 @@ main {
 
                     .swiper-button-prev,
                     .swiper-button-next {
+                        top: 43%;
                         color: base.$gold;
                     }
                 }
