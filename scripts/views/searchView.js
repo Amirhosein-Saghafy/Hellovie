@@ -29,6 +29,9 @@ class searchView {
             <a class="result-item" data-id="${movie.id}">
                 <div class="result-img">
                     <img src="${movie.image}" alt="Movie image">
+                    <div class="preloader">
+                        <div class="spinner"></div>
+                    </div>
                 </div>
                 <div class="result-description">
                     <div class="result-name">
@@ -42,6 +45,8 @@ class searchView {
 
             this.#parentElement.querySelector('.search-result').insertAdjacentHTML('afterbegin', markup);
         });
+
+        this.hideImagePreloader();
     }
 
     renderError(message) {
@@ -123,6 +128,14 @@ class searchView {
             this.#parentElement.querySelector('.search-field').value = '';
 
             handler(selectedMovie.dataset.id);
+        });
+    }
+
+    hideImagePreloader(){
+        
+        this.#parentElement.querySelector('.result-img img').addEventListener('load', (e) => {
+
+            e.target.closest('.result-img').querySelector('.preloader').classList.add('hide');
         });
     }
 

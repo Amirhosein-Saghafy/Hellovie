@@ -155,6 +155,14 @@ main nav .search .search-result::-webkit-scrollbar-thumb {
 main nav .search .search-result::-webkit-scrollbar-track {
   background-color: #272728;
 }
+main nav .search .search-result > .preloader {
+  position: relative;
+  display: block;
+  width: 550px;
+  height: 450px;
+  background-color: #3A3637;
+  z-index: 10;
+}
 @keyframes rotatePreloader {
   0% {
     transform: rotateZ(0deg);
@@ -166,20 +174,12 @@ main nav .search .search-result::-webkit-scrollbar-track {
     transform: rotateZ(360deg);
   }
 }
-main nav .search .search-result .preloader {
-  position: relative;
-  display: block;
-  width: 550px;
-  height: 450px;
-  background-color: #3A3637;
-  z-index: 10;
-}
-main nav .search .search-result .preloader .spinner {
+main nav .search .search-result > .preloader .spinner {
   position: absolute;
   width: 30px;
   height: 30px;
-  top: 50%;
-  left: 50%;
+  top: 46%;
+  left: 47%;
   transform: translate(-50%, -50%);
   background-color: transparent;
   border: 2px solid #D9A61C;
@@ -203,13 +203,49 @@ main nav .search .search-result .result-item:last-child {
   border-bottom: none;
 }
 main nav .search .search-result .result-img {
-  width: auto;
-  height: auto;
+  position: relative;
+  width: 150px;
+  height: 220px;
+  overflow: hidden;
 }
 main nav .search .search-result .result-img img {
   width: 150px;
-  height: inherit;
+  height: auto;
   color: #D9A61C;
+}
+main nav .search .search-result .result-img .preloader {
+  position: absolute;
+  width: 150px;
+  height: 220px;
+  left: 0;
+  top: 0;
+  background-color: #3A3637;
+}
+main nav .search .search-result .result-img .preloader.hide {
+  display: none;
+}
+@keyframes rotatePreloader {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  50% {
+    transform: rotateZ(180deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+main nav .search .search-result .result-img .preloader .spinner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 42%;
+  left: 38%;
+  background-color: transparent;
+  border: 2px solid #D9A61C;
+  border-bottom: 2px solid transparent;
+  border-radius: 50%;
+  animation: rotatePreloader 800ms linear 0s infinite normal forwards;
 }
 main nav .search .search-result .result-description {
   display: flex;
@@ -266,21 +302,22 @@ main nav .select-category .select-container {
   width: 100%;
   left: 0;
   top: calc(100% + 10px);
-  padding-top: 1.25rem;
-  padding-right: 1.75rem;
-  padding-left: 1.75rem;
+  padding: 1rem;
   border: 1px solid #D9A61C;
   border-radius: 40px;
   color: #F6EFF0;
   background-color: #3A3637;
   z-index: 1;
 }
-main nav .select-category .select-container .select-value {
-  cursor: pointer;
-  margin-bottom: 1.5rem;
-}
 main nav .select-category .select-container.open {
   display: block;
+}
+main nav .select-category .select-container .select-value {
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+}
+main nav .select-category .select-container .select-value:hover {
+  background-color: #272728;
 }
 main .movie .container {
   width: calc(100% - 75px);
@@ -294,6 +331,13 @@ main .movie .content {
   padding-bottom: 3rem;
   flex-direction: column;
 }
+main .movie .content .preloader {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 286px;
+  z-index: 10;
+}
 @keyframes rotatePreloader {
   0% {
     transform: rotateZ(0deg);
@@ -304,13 +348,6 @@ main .movie .content {
   100% {
     transform: rotateZ(360deg);
   }
-}
-main .movie .content .preloader {
-  position: relative;
-  display: block;
-  width: 100%;
-  height: 286px;
-  z-index: 10;
 }
 main .movie .content .preloader .spinner {
   position: absolute;
@@ -375,15 +412,14 @@ main .movie .content .selected-movie .movie-content .movie-image .preloader.hide
 }
 main .movie .content .selected-movie .movie-content .movie-image .preloader .spinner {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 46%;
+  top: 46%;
   width: 25px;
   height: 25px;
   border-radius: 50%;
   border: 2px solid #D9A61C;
   border-bottom: 2px solid transparent;
-  animation: rotateSpinner 400ms linear 0s infinite normal forwards;
+  animation: rotateSpinner 800ms linear 0s infinite normal forwards;
 }
 main .movie .content .selected-movie .movie-details {
   width: 100%;
@@ -593,9 +629,8 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-actors-im
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-image .preloader .spinner {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 46%;
+  top: 48%;
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -607,15 +642,20 @@ main .movie .content .selected-movie .movie-details .movie-body .movie-actors-im
   display: flex;
   margin-top: 1rem;
   justify-content: center;
+  align-items: center;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-name h4 {
+  width: 47.5%;
   font-size: 20px;
   color: #F6EFF0;
-  margin: 0 0.5rem;
+  text-align: center;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .actor-name span {
+  display: inline-block;
+  width: 7%;
   font-size: 20px;
   color: #D9A61C;
+  text-align: center;
 }
 main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .swiper-button-prev,
 main .movie .content .selected-movie .movie-details .movie-body .movie-actors-images .swiper-button-next {
@@ -651,12 +691,42 @@ main .movie .content .similar-movies .swiper .swiper-slide .movie-img img {
   width: inherit;
   height: inherit;
 }
+main .movie .content .similar-movies .swiper .swiper-slide .movie-img .preloader {
+  position: absolute;
+  width: 367px;
+  height: 500px;
+  left: 0;
+  top: 0;
+  background-color: #3A3637;
+}
+main .movie .content .similar-movies .swiper .swiper-slide .movie-img .preloader.hide {
+  display: none;
+}
+@keyframes rotateSpinner {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+main .movie .content .similar-movies .swiper .swiper-slide .movie-img .preloader .spinner {
+  position: absolute;
+  left: 46%;
+  top: 48%;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #D9A61C;
+  border-bottom: 2px solid transparent;
+  animation: rotateSpinner 800ms linear 0s infinite normal forwards;
+}
 main .movie .content .similar-movies .swiper .swiper-slide .movie-details {
   height: auto;
   position: relative;
   border-radius: 16px;
   background-color: #3A3637;
-  box-shadow: 5px 5px 5px -3px #D9A61C;
+  border: 2px solid #F6EFF0;
 }
 main .movie .content .similar-movies .swiper .swiper-slide .movie-details .movie-header {
   display: flex;

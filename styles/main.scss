@@ -150,21 +150,7 @@ main {
                     background-color: #272728;
                 }
 
-                @keyframes rotatePreloader {
-                    0% {
-                        transform: rotateZ(0deg);
-                    }
-
-                    50% {
-                        transform: rotateZ(180deg);
-                    }
-
-                    100% {
-                        transform: rotateZ(360deg);
-                    }
-                }
-
-                .preloader {
+                >.preloader {
 
                     & {
                         position: relative;
@@ -175,12 +161,26 @@ main {
                         z-index: 10;
                     }
 
+                    @keyframes rotatePreloader {
+                        0% {
+                            transform: rotateZ(0deg);
+                        }
+
+                        50% {
+                            transform: rotateZ(180deg);
+                        }
+
+                        100% {
+                            transform: rotateZ(360deg);
+                        }
+                    }
+
                     .spinner {
                         position: absolute;
                         width: 30px;
                         height: 30px;
-                        top: 50%;
-                        left: 50%;
+                        top: 46%;
+                        left: 47%;
                         transform: translate(-50%, -50%);
                         background-color: transparent;
                         border: 2px solid base.$gold;
@@ -205,14 +205,59 @@ main {
                 .result-img {
 
                     & {
-                        width: auto;
-                        height: auto;
+                        position: relative;
+                        width: 150px;
+                        height: 220px;
+                        overflow: hidden;
                     }
 
                     img {
                         width: 150px;
-                        height: inherit;
+                        height: auto;
                         color: base.$gold;
+                    }
+
+                    .preloader {
+
+                        & {
+                            position: absolute;
+                            width: 150px;
+                            height: 220px;
+                            left: 0;
+                            top: 0;
+                            background-color: base.$dark;
+                        }
+
+                        &.hide {
+                            display: none;
+                        }
+
+                        @keyframes rotatePreloader {
+                            0% {
+                                transform: rotateZ(0deg);
+                            }
+
+                            50% {
+                                transform: rotateZ(180deg);
+                            }
+
+                            100% {
+                                transform: rotateZ(360deg);
+                            }
+                        }
+
+                        .spinner {
+                            position: absolute;
+                            width: 30px;
+                            height: 30px;
+                            top: 42%;
+                            left: 38%;
+                            background-color: transparent;
+                            border: 2px solid base.$gold;
+                            border-bottom: 2px solid transparent;
+                            border-radius: 50%;
+                            animation: rotatePreloader 800ms linear 0s infinite normal forwards;
+                        }
                     }
                 }
 
@@ -284,18 +329,13 @@ main {
             .select-container {
 
                 & {
+
                     display: none;
                     position: absolute;
                     width: 100%;
                     left: 0;
                     top: calc(100% + 10px);
-
-                    padding: {
-                        top: 1.25rem;
-                        right: 1.75rem;
-                        left: 1.75rem;
-                    }
-
+                    padding: 1rem;
                     border: 1px solid base.$gold;
                     border-radius: 40px;
                     color: base.$white;
@@ -303,13 +343,17 @@ main {
                     z-index: 1;
                 }
 
-                .select-value {
-                    cursor: pointer;
-                    margin-bottom: 1.5rem;
-                }
-
                 &.open {
                     display: block;
+                }
+
+                .select-value {
+                    cursor: pointer;
+                    padding: 0.75rem 1rem;
+                }
+
+                .select-value:hover {
+                    background-color: #272728;
                 }
             }
         }
@@ -333,20 +377,6 @@ main {
                 flex-direction: column;
             }
 
-            @keyframes rotatePreloader {
-                0% {
-                    transform: rotateZ(0deg);
-                }
-
-                50% {
-                    transform: rotateZ(180deg);
-                }
-
-                100% {
-                    transform: rotateZ(360deg);
-                }
-            }
-
             .preloader {
 
                 & {
@@ -355,6 +385,20 @@ main {
                     width: 100%;
                     height: 286px;
                     z-index: 10;
+                }
+
+                @keyframes rotatePreloader {
+                    0% {
+                        transform: rotateZ(0deg);
+                    }
+
+                    50% {
+                        transform: rotateZ(180deg);
+                    }
+
+                    100% {
+                        transform: rotateZ(360deg);
+                    }
                 }
 
                 .spinner {
@@ -444,15 +488,14 @@ main {
 
                             .spinner {
                                 position: absolute;
-                                left: 50%;
-                                top: 50%;
-                                transform: translate(-50%, -50%);
+                                left: 46%;
+                                top: 46%;
                                 width: 25px;
                                 height: 25px;
                                 border-radius: 50%;
                                 border: 2px solid base.$gold;
                                 border-bottom: 2px solid transparent;
-                                animation: rotateSpinner 400ms linear 0s infinite normal forwards;
+                                animation: rotateSpinner 800ms linear 0s infinite normal forwards;
                             }
                         }
                     }
@@ -696,9 +739,8 @@ main {
 
                                     .spinner {
                                         position: absolute;
-                                        left: 50%;
-                                        top: 50%;
-                                        transform: translate(-50%, -50%);
+                                        left: 46%;
+                                        top: 48%;
                                         width: 25px;
                                         height: 25px;
                                         border-radius: 50%;
@@ -715,17 +757,22 @@ main {
                                     display: flex;
                                     margin-top: 1rem;
                                     justify-content: center;
+                                    align-items: center;
                                 }
 
                                 h4 {
+                                    width: 47.5%;
                                     font-size: 20px;
                                     color: base.$white;
-                                    margin: 0 0.5rem;
+                                    text-align: center;
                                 }
 
                                 span {
+                                    display: inline-block;
+                                    width:7%;
                                     font-size: 20px;
                                     color: base.$gold;
+                                    text-align: center;
                                 }
                             }
 
@@ -784,6 +831,44 @@ main {
                                 width: inherit;
                                 height: inherit;
                             }
+
+                            .preloader {
+
+                                & {
+                                    position: absolute;
+                                    width: 367px;
+                                    height: 500px;
+                                    left: 0;
+                                    top: 0;
+                                    background-color: base.$dark;
+                                }
+
+                                &.hide {
+                                    display: none;
+                                }
+
+                                @keyframes rotateSpinner {
+                                    from {
+                                        transform: rotateZ(0deg);
+                                    }
+
+                                    to {
+                                        transform: rotateZ(360deg);
+                                    }
+                                }
+
+                                .spinner {
+                                    position: absolute;
+                                    left: 46%;
+                                    top: 48%;
+                                    width: 25px;
+                                    height: 25px;
+                                    border-radius: 50%;
+                                    border: 2px solid base.$gold;
+                                    border-bottom: 2px solid transparent;
+                                    animation: rotateSpinner 800ms linear 0s infinite normal forwards;
+                                }
+                            }
                         }
 
                         .movie-details {
@@ -793,7 +878,8 @@ main {
                                 position: relative;
                                 border-radius: 16px;
                                 background-color: base.$dark;
-                                box-shadow: 5px 5px 5px -3px base.$gold;
+                                // box-shadow: 5px 5px 5px -3px base.$gold;
+                                border: 2px solid base.$white;
                             }
 
                             .movie-header {

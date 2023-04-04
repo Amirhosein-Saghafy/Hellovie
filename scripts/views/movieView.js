@@ -195,6 +195,9 @@ class searchView {
             <div class="swiper-slide movie-slide" data-id="${similar.id}">
                 <div class="movie-img">
                     <img src="${similar.image}" alt="movie poster">
+                    <div class="preloader">
+                        <div class="spinner"></div> 
+                    </div>
                 </div>
                 <div class="movie-details">
                     <div class="movie-header">
@@ -265,6 +268,15 @@ class searchView {
     hideImagePreloader2(){
         
         const moviePoster = this.#parentElement.querySelector('.movie-image img');
+
+        moviePoster.addEventListener('load', (e) => {
+            e.target.closest('.movie-image').querySelector('.preloader').classList.add('hide');
+        });
+    }
+
+    hideImagePreloader3(){
+        
+        const moviePoster = this.#parentElement.querySelector('.similar-movies .movie-img img');
 
         moviePoster.addEventListener('load', (e) => {
             e.target.closest('.movie-image').querySelector('.preloader').classList.add('hide');
