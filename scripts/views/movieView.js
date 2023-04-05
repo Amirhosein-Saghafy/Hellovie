@@ -117,24 +117,22 @@ class searchView {
                             ${movie.plot || 'Unknown'}
                             </p>
                         </div>
-                        ${(movie.actorList.length !== 0 ? this.renderActorsList(movie.actorList) : '')}
+                        ${(movie.actorList.length > 0 ? this.renderActorsList(movie.actorList) : '')}
                     </div>
                 </div>
             </div>
-            ${(movie.similars.length !== 0 ? this.renderSimilarMovies(movie.similars) : '')} `;
+            ${(movie.similars.length > 0 ? this.renderSimilarMovies(movie.similars) : '')} `;
 
         this.#parentElement.querySelector('.content').insertAdjacentHTML('afterbegin', markup);
 
-        // debugger;
-
-        if (movie.actorList.length !== 0) {
+        if (movie.actorList.length > 0) {
             if (movie.actorList.length >= 6)
                 this.sliderHandler('actorsList', true);
             else
                 this.sliderHandler('actorsList', false);
         }
 
-        if (movie.similars.length !== 0) {
+        if (movie.similars.length > 0) {
             if (movie.similars.length >= 6)
                 this.sliderHandler('similarMovies', true);
             else
