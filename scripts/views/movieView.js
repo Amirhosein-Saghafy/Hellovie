@@ -27,7 +27,7 @@ class searchView {
                     <h2>Movie</h2>
                 </div>
                 <div class="movie-content">
-                    <div class="movie-image">
+                    <div class="image-container">
                         <img src="${movie.image}" alt="">
                         <div class="preloader">
                             <div class="spinner"></div>
@@ -117,7 +117,7 @@ class searchView {
                             ${movie.plot || 'Unknown'}
                             </p>
                         </div>
-                        ${(movie.actorList.length !== 0 ? this.renderActorsImages(movie.actorList) : '')}
+                        ${(movie.actorList.length !== 0 ? this.renderActorsList(movie.actorList) : '')}
                     </div>
                 </div>
             </div>
@@ -125,11 +125,23 @@ class searchView {
 
         this.#parentElement.querySelector('.content').insertAdjacentHTML('afterbegin', markup);
 
-        if (movie.similars.length !== 0)
-            this.sliderHandler();
+        // debugger;
 
-        this.hideImagePreloader();
-        this.hideImagePreloader2();
+        if (movie.actorList.length !== 0) {
+            if (movie.actorList.length >= 6)
+                this.sliderHandler('actorsList', true);
+            else
+                this.sliderHandler('actorsList', false);
+        }
+
+        if (movie.similars.length !== 0) {
+            if (movie.similars.length >= 6)
+                this.sliderHandler('similarMovies', true);
+            else
+                this.sliderHandler('similarMovies', false);
+        }
+
+        this.hidePreloaders();
     }
 
     renderError(message) {
@@ -143,16 +155,16 @@ class searchView {
         this.#parentElement.querySelector('.content').insertAdjacentHTML("afterbegin", markup);
     }
 
-    renderActorsImages(actorList) {
+    renderActorsList(actorList) {
 
-        let actorsImagesSection = '';
-        let actorsImagesArray = [];
+        let actorsListSection = '';
+        let actorsArray = [];
 
         actorList.forEach(actor => {
 
-            actorsImagesArray.push(`
+            actorsArray.push(`
             <div class="swiper-slide">
-                <div class="actor-image">
+                <div class="image-container">
                     <img src="${actor.image}" alt="${actor.name}">
                     <div class="preloader">
                         <div class="spinner"></div>
@@ -167,21 +179,21 @@ class searchView {
             `);
         });
 
-        actorsImagesSection = `
+        actorsListSection = `
             <div class="movie-actors-images">
                 <div class="title">
                     <h2>Actors Images</h2>
                 </div>
                 <div class="swiper swiper1">
                     <div class="swiper-wrapper">
-                        ${actorsImagesArray.join('')}
+                        ${actorsArray.join('')}
                     </div>
                     <div class="swiper-button-prev swiper-button-prev1"></div>
                     <div class="swiper-button-next swiper-button-next1"></div>
                 </div>
             </div>`;
 
-        return actorsImagesSection;
+        return actorsListSection;
     }
 
     renderSimilarMovies(similars) {
@@ -193,7 +205,7 @@ class searchView {
 
             similarMoviesArray.push(`
             <div class="swiper-slide movie-slide" data-id="${similar.id}">
-                <div class="movie-img">
+                <div class="image-container">
                     <img src="${similar.image}" alt="movie poster">
                     <div class="preloader">
                         <div class="spinner"></div> 
@@ -232,6 +244,24 @@ class searchView {
         return similarMoviesSection;
     }
 
+    hidePreloaders() {
+
+        const imagesArray = [];
+
+        imagesArray.push(this.#parentElement.querySelector('.movie-content > .image-container img'));
+
+        imagesArray.push(...this.#parentElement.querySelectorAll('.movie-actors-images .image-container img'));
+
+        imagesArray.push(...this.#parentElement.querySelectorAll('.similar-movies .image-container img'));
+
+        imagesArray.forEach(img => {
+
+            img.addEventListener('load', (e) => {
+                e.target.closest('.image-container').querySelector('.preloader').classList.add('hide');
+            });
+        });
+    }
+
     calculateStar(imDbRating) {
 
         let fillStarArray = [];
@@ -253,36 +283,6 @@ class searchView {
 
     }
 
-    hideImagePreloader() {
-
-        const actorImages = [...this.#parentElement.querySelectorAll('.actor-image img')];
-
-        actorImages.forEach(img => {
-            
-            img.addEventListener('load', (e) => {
-                e.target.closest('.actor-image').querySelector('.preloader').classList.add('hide');
-            });
-        });
-    }
-
-    hideImagePreloader2(){
-        
-        const moviePoster = this.#parentElement.querySelector('.movie-image img');
-
-        moviePoster.addEventListener('load', (e) => {
-            e.target.closest('.movie-image').querySelector('.preloader').classList.add('hide');
-        });
-    }
-
-    hideImagePreloader3(){
-        
-        const moviePoster = this.#parentElement.querySelector('.similar-movies .movie-img img');
-
-        moviePoster.addEventListener('load', (e) => {
-            e.target.closest('.movie-image').querySelector('.preloader').classList.add('hide');
-        });
-    }
-
     selectRelatedMovieHandler(handler) {
 
         this.#parentElement.addEventListener('click', function (e) {
@@ -296,33 +296,41 @@ class searchView {
         });
     }
 
-    sliderHandler() {
+    sliderHandler(id, loop) {
 
-        const swiper = new Swiper('.swiper1', {
-            grabCursor: true,
-            loop: true,
-            slidesPerView: 3,
-            speed: 400,
-            spaceBetween: 75,
+        switch (id) {
 
-            navigation: {
-                nextEl: '.swiper-button-next1',
-                prevEl: '.swiper-button-prev1',
-            },
-        });
+            case 'actorsList':
+                const swiper = new Swiper('.swiper1', {
+                    grabCursor: true,
+                    loop,
+                    slidesPerView: 3,
+                    speed: 400,
+                    spaceBetween: 75,
 
-        const swiper2 = new Swiper('.swiper2', {
-            grabCursor: true,
-            loop: true,
-            slidesPerView: 3,
-            speed: 400,
-            spaceBetween: 75,
+                    navigation: {
+                        nextEl: '.swiper-button-next1',
+                        prevEl: '.swiper-button-prev1',
+                    },
+                });
+                break;
 
-            navigation: {
-                nextEl: '.swiper-button-next2',
-                prevEl: '.swiper-button-prev2',
-            },
-        });
+            case 'similarMovies':
+                const swiper2 = new Swiper('.swiper2', {
+                    grabCursor: true,
+                    loop,
+                    slidesPerView: 3,
+                    speed: 400,
+                    spaceBetween: 75,
+
+                    navigation: {
+                        nextEl: '.swiper-button-next2',
+                        prevEl: '.swiper-button-prev2',
+                    },
+                });
+                break;
+
+        }
     }
 }
 

@@ -46,7 +46,7 @@ class searchView {
             this.#parentElement.querySelector('.search-result').insertAdjacentHTML('afterbegin', markup);
         });
 
-        this.hideImagePreloader();
+        this.hidePreloaders();
     }
 
     renderError(message) {
@@ -131,11 +131,16 @@ class searchView {
         });
     }
 
-    hideImagePreloader(){
-        
-        this.#parentElement.querySelector('.result-img img').addEventListener('load', (e) => {
+    hidePreloaders() {
 
-            e.target.closest('.result-img').querySelector('.preloader').classList.add('hide');
+        const imagesArray = [...this.#parentElement.querySelectorAll('.result-img img')];
+
+        imagesArray.forEach(img => {
+
+            img.addEventListener('load', (e) => {
+
+                e.target.closest('.result-img').querySelector('.preloader').classList.add('hide');
+            });
         });
     }
 
