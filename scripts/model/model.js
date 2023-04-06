@@ -1,4 +1,5 @@
-import { baseUrl, apiKey, movieUrl } from "../utility.js";
+// import constant values
+import { baseUrl, apiKey } from "../utility.js";
 
 class model {
 
@@ -9,6 +10,7 @@ class model {
         isSuccess: true,
     }
 
+    // search method
     async search(searchValue, selectedGenre) {
 
         try {
@@ -42,6 +44,7 @@ class model {
         }
     }
 
+    // select specific movie method
     async selectMovie(id) {
 
         try {
