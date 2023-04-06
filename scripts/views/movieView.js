@@ -302,14 +302,30 @@ class searchView {
                 const swiper = new Swiper('.swiper1', {
                     grabCursor: true,
                     loop,
-                    slidesPerView: 3,
+                    slidesPerView: 1,
                     speed: 400,
-                    spaceBetween: 75,
+                    spaceBetween: 20,
+                    width: 350,
 
                     navigation: {
                         nextEl: '.swiper-button-next1',
                         prevEl: '.swiper-button-prev1',
                     },
+
+                    breakpoints: {
+
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 50,
+                            width: null,
+                        },
+
+                        992: {
+                            slidesPerView: 3,
+                            spaceBetween: 75,
+                            width: null,
+                        }
+                    }
                 });
                 break;
 
@@ -317,14 +333,30 @@ class searchView {
                 const swiper2 = new Swiper('.swiper2', {
                     grabCursor: true,
                     loop,
-                    slidesPerView: 3,
+                    slidesPerView: 1,
                     speed: 400,
-                    spaceBetween: 75,
+                    spaceBetween: 20,
+                    width: 350,
 
                     navigation: {
                         nextEl: '.swiper-button-next2',
                         prevEl: '.swiper-button-prev2',
                     },
+
+                    breakpoints: {
+
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                            width: null,
+                        },
+
+                        992: {
+                            slidesPerView: 3,
+                            spaceBetween: 75,
+                            width: null,
+                        }
+                    }
                 });
                 break;
 
