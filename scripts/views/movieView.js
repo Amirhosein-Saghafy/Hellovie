@@ -1,6 +1,3 @@
-// import slider module from third party library
-import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.esm.browser.min.js'
-
 class searchView {
 
     #errorMessage = ``;
@@ -51,7 +48,7 @@ class searchView {
                     <div class="movie-body">
                         <div class="movie-realase">
                             <svg width="18" height="18" fill="#F6EFF0">
-                                <use xlink:href="./icons/solid.svg#film" />
+                                <use xlink:href="./solid.c6c386c0.svg#film" />
                             </svg>
                             <div class="movie-type">
                                 <span>${movie.type || 'Unknown'}</span>
@@ -62,26 +59,26 @@ class searchView {
                         </div>
                         <div class="movie-genres">
                             <svg width="18" height="18" fill="#F6EFF0">
-                                <use xlink:href="./icons/regular.svg#menu" />
+                                <use xlink:href="./regular.13f8d743.svg#menu" />
                             </svg>
                             <span>${movie.genres || 'Unknown'}</span>
                         </div>
                         <div class="movie-duration">
                             <svg width="18" height="18" fill="#F6EFF0">
-                                <use xlink:href="./icons/regular.svg#clock" />
+                                <use xlink:href="./regular.13f8d743.svg#clock" />
                             </svg>
                             <span>${movie.runtimeStr || 'Unknown'}</span>
                         </div>
                         <div class="movie-languages">
                             <svg width="18" height="18" fill="#F6EFF0">
-                                <use xlink:href="./icons/solid.svg#language" />
+                                <use xlink:href="./solid.c6c386c0.svg#language" />
                             </svg>
                             <span>Languages :</span>
                             <span>${movie.languages || 'Unknown'}</span>
                         </div>
                         <div class="metacritic">
                             <svg width="18" height="18" fill="#F6EFF0">
-                                <use xlink:href="./icons/solid.svg#m" />
+                                <use xlink:href="./solid.c6c386c0.svg#m" />
                             </svg>
                             <span>Metacritic :</span>
                             <span>${movie.metacriticRating || 'Unknown'}</span>
@@ -89,21 +86,21 @@ class searchView {
                         <div class="movie-crew">
                             <div class="directors">
                                 <svg width="18" height="18" fill="#F6EFF0">
-                                    <use xlink:href="./icons/solid.svg#clapperboard" />
+                                    <use xlink:href="./solid.c6c386c0.svg#clapperboard" />
                                 </svg>
                                 <label>Directors :</label>
                                 <span>${movie.directors || 'Unknown'}</span>
                             </div>
                             <div class="writers">
                                 <svg width="18" height="18" fill="#F6EFF0">
-                                    <use xlink:href="./icons/solid.svg#pen-to-square" />
+                                    <use xlink:href="./solid.c6c386c0.svg#pen-to-square" />
                                 </svg>
                                 <label>Writers :</label>
                                 <span>${movie.writers || 'Unknown'}</span>
                             </div>
                             <div class="stars">
                                 <svg width="18" height="18" fill="#F6EFF0">
-                                    <use xlink:href="./icons/solid.svg#people-group" />
+                                    <use xlink:href="./solid.c6c386c0.svg#people-group" />
                                 </svg>
                                 <label>Stars :</label>
                                 <span>${movie.stars || 'Unknown'}</span>
@@ -111,7 +108,7 @@ class searchView {
                         </div>
                         <div class="movie-description">
                             <svg width="18" height="18" fill="#F6EFF0">
-                                <use xlink:href="./icons/regular.svg#chart-bar"></use>
+                                <use xlink:href="./regular.13f8d743.svg#chart-bar"></use>
                             </svg>
                             <span>Story : </span>
                             <p>
@@ -273,7 +270,7 @@ class searchView {
 
             fillStarArray.push(`
                 <svg width="12" height="12" fill="#D9A61C">
-                    <use xlink:href="./icons/solid.svg#star" />
+                    <use xlink:href="./solid.c6c386c0.svg#star" />
                 </svg>
                 `);
         }

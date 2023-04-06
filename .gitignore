@@ -4,3 +4,5 @@ package.json
 font
 images
 icons
+dist
+.parcel-cache
